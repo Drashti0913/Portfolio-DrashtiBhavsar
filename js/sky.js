@@ -138,7 +138,7 @@ export function initSky(root, { skills, projects }) {
     readout.replaceChildren(
       el("p", "sky__readout-lead", `${lead} ${hint}`),
       list,
-      link(filterUrl, filterText, "sky__readout-link"),
+      link(filterUrl, filterText, "sky__readout-link")
     );
   }
 
@@ -156,7 +156,7 @@ export function initSky(root, { skills, projects }) {
     readout.replaceChildren(
       el("p", "sky__readout-lead", project.title),
       el("p", "sky__readout-text", project.summary),
-      link(projectUrl, "Read about this project", "sky__readout-link"),
+      link(projectUrl, "Read about this project", "sky__readout-link")
     );
   }
 
@@ -212,7 +212,7 @@ export function initSky(root, { skills, projects }) {
     button.type = "button";
     button.setAttribute(
       "aria-label",
-      `${star.label}, used in ${pluralize(star.count, "project")}`,
+      `${star.label}, used in ${pluralize(star.count, "project")}`
     );
     const dot = el("span", "star__dot");
     dot.setAttribute("aria-hidden", "true");
