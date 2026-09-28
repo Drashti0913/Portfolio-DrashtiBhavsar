@@ -7,7 +7,7 @@ This is Drashti Bhavsar's personal homepage. It's a static, front-end only site 
 The site has one job: help someone who has just heard of Drashti understand, in under a minute, what she works on and how to reach her. It has three pages.
 
 - **Home** (`index.html`) introduces her, shows the skill sky map, and covers her background, experience, education and contact details.
-- **Projects** (`projects.html`) lists her projects, research and articles. Projects can be filtered by skill.
+- **Projects** (`projects.html`) lists her projects, research and publications. Projects can be filtered by skill.
 - **Now** (`now.html`) is an AI-generated page describing what she's focused on this season.
 
 ### The original component: skill sky map
@@ -23,13 +23,13 @@ Stars are placed with a sunflower-spiral layout (golden-angle spacing), so the c
 
 The design borrows from printed star atlases: cool chart-paper gray, navy ink and brass stars. The sky map is the one bold element on the page, and everything around it stays quiet.
 
-| Token | Value | Use |
-| --- | --- | --- |
-| Paper | `#edf0f4` | Page background |
-| Ink | `#16213d` | Text, sky background |
-| Ink soft | `#46506b` | Secondary text |
-| Cobalt | `#2a45b0` | Links, focus rings |
-| Brass | `#b8862b` / `#e2b85c` | Stars, timeline markers, constellation lines |
+| Token    | Value                 | Use                                          |
+| -------- | --------------------- | -------------------------------------------- |
+| Paper    | `#edf0f4`             | Page background                              |
+| Ink      | `#16213d`             | Text, sky background                         |
+| Ink soft | `#46506b`             | Secondary text                               |
+| Cobalt   | `#2a45b0`             | Links, focus rings                           |
+| Brass    | `#b8862b` / `#e2b85c` | Stars, timeline markers, constellation lines |
 
 The typefaces are Newsreader (serif) for headings and body, and Public Sans for navigation, buttons and small labels. Sections use a margin-note layout, with the section title in a narrow left column and content on the right, collapsing to one column on phones.
 
@@ -46,7 +46,7 @@ Priya is a university recruiter at a mid-size Boston software company. She revie
 
 Dr. Ruiz runs a research lab and is looking for a graduate research assistant. A student emailed her with a link to this site.
 
-- **Goals:** understand the student's research interests, read something she has written, and judge whether the student can work independently.
+- **Goals:** understand the student's research interests, read one of her published papers, and judge whether the student can work independently.
 - **Frustrations:** sites that list "research" with no description of the question or methods.
 
 ### Marcus, classmate
@@ -60,27 +60,27 @@ Marcus is in the same program and is forming a team for a hackathon. He wants a 
 
 ### Priya checks a candidate between calls
 
-Priya has five minutes before her next call and opens Drashti's link from a résumé. The home page loads with Drashti's name, program and a two-line intro right at the top, so within seconds she knows who this is. She glances at the sky map and sees that the biggest stars are the skills her team hires for. She clicks "See my projects," skims the list and its skill tags, then goes back and clicks "Email me" to start a message.
+Priya has five minutes before her next call and opens Drashti's link from a résumé. The home page loads with Drashti's name, program and a two-line intro right at the top, so within seconds she knows who this is. She glances at the sky map and sees that the biggest stars are the skills her team hires for. She clicks "See my projects," skims the list and its skill tags, then goes back and clicks "Get in touch" to find her email.
 
-*Acceptance:* name, program and intro are visible without scrolling on desktop and mobile. The email link is available in the hero and in the contact section. Each project lists the skills it used.
+_Acceptance:_ name, program and intro are visible without scrolling on desktop and mobile. A **Get in touch** button in the hero leads straight to the contact section. Each project lists the skills it used.
 
 ### Dr. Ruiz evaluates a research assistant
 
-Dr. Ruiz opens the site from an email. She goes straight to the Projects page, scrolls to Research, and reads a short description of each research topic and its status. She follows a link to one of Drashti's articles to see how she writes. Satisfied, she returns to the home page to check her education timeline.
+Dr. Ruiz opens the site from an email. She goes straight to the Projects page, scrolls to Research, and reads a short description of each research topic and its status. She follows a link to one of Drashti's published papers to see how she writes. Satisfied, she returns to the home page to check her education timeline.
 
-*Acceptance:* research entries show a title, status and summary. Articles link to the full piece when a URL exists. Education appears in date order on the home page.
+_Acceptance:_ research entries show a title, status and summary. Publications link to the full paper when a URL exists. Education appears in date order on the home page.
 
 ### Marcus looks for a teammate who knows data visualization
 
-Marcus opens the home page and clicks the "Data visualization" star on the sky map. Lines light up to the other skills Drashti used alongside it, and a readout lists the projects that used it. He follows "See all Data visualization projects" and lands on the projects page, already filtered. He opens the code link for one project to look at her work, then copies the page link (which keeps the filter) and sends it to his teammate.
+Marcus opens the home page and clicks the "Data visualization" star on the sky map. Lines light up to the other skills Drashti used alongside it, and a readout lists the projects that used it. He follows "See all Data visualization projects" and lands on the projects page, already filtered. He copies the page link (which keeps the filter) and sends it to his teammate, then follows her GitHub link in the contact section to look at her code.
 
-*Acceptance:* clicking a star lists matching projects and links to `projects.html?skill=<id>`. The projects page reads the `skill` parameter on load, applies the filter, and updates the URL when the filter changes. All controls work with a keyboard.
+_Acceptance:_ clicking a star lists matching projects and links to `projects.html?skill=<id>`. The projects page reads the `skill` parameter on load, applies the filter, and updates the URL when the filter changes. All controls work with a keyboard.
 
 ### A visitor on a phone
 
 A visitor opens the link on their phone from LinkedIn. The layout stacks into one column, the sky map scales to the screen width, and the project buttons wrap onto new lines. Tapping a project draws its constellation, and the readout below explains what was selected.
 
-*Acceptance:* no horizontal scrolling at 360px width, and tap targets are at least as large as the label text.
+_Acceptance:_ no horizontal scrolling at 360px width, and tap targets are at least as large as the label text.
 
 ## Design mockups
 
