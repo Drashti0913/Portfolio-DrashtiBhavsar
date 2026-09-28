@@ -1,98 +1,105 @@
-# Portfolio Website
+# Drashti Bhavsar: personal homepage
 
-A modern, responsive portfolio website built with Next.js, TypeScript, and Tailwind CSS.
+My personal homepage, built with vanilla HTML5, CSS3 and ES6 modules. It has no frameworks, no component libraries and no backend.
 
-## Features
+- **Author:** Drashti Bhavsar ([GitHub](https://github.com/Drashti0913))
+- **Class:** TODO: course name and link to the course page
+- **Live site:** TODO: GitHub Pages URL
+- **Demo video:** TODO: public video link
+- **Design document:** [docs/design-document.md](./docs/design-document.md)
 
-- 🎨 Modern and beautiful UI design
-- 📱 Fully responsive (mobile, tablet, desktop)
-- ⚡ Fast and optimized with Next.js
-- 🌙 Dark mode support
-- 🧭 Smooth scrolling navigation
-- sections: Home, About, Experience, Research, Projects, Articles, Contact
+![Screenshot of the home page showing the skill sky map with a project constellation drawn](./images/screenshot.png)
 
-## Getting Started
+## Project objective
 
-### Prerequisites
+Build a static homepage that helps recruiters, faculty and classmates understand what I work on and how to reach me, while practicing semantic HTML, organized CSS, and JavaScript split into ES6 modules.
 
-- Node.js 18+ installed
-- npm or yarn package manager
+## Pages
 
-### Installation
+| Page | File | What's on it |
+| --- | --- | --- |
+| Home | `index.html` | Intro, skill sky map, about, experience, education, contact |
+| Projects | `projects.html` | Projects filterable by skill, research, articles |
+| Now | `now.html` | AI-generated page about what I'm focused on this season |
 
-1. Install dependencies:
-```bash
-npm install
+## Original component: skill sky map
+
+The home page shows my skills as stars on a round star chart. A star's size reflects how many of my projects use that skill.
+
+- Pick a **star** to draw lines to the skills it was used with and see the projects that use it. A link opens the projects page already filtered by that skill.
+- Pick a **project** to draw its constellation, connecting every skill it used.
+
+Stars are placed with a golden-angle spiral so the chart stays balanced as skills are added. The component uses real buttons, `aria-pressed`, a live region for the readout, and Escape to clear. The code is in [`js/sky.js`](./js/sky.js).
+
+The projects page also has a skill filter ([`js/filter.js`](./js/filter.js)) that keeps the selected skill in the URL, so filtered views can be shared.
+
+## Project structure
+
+```text
+.
+├── index.html            Home page
+├── projects.html         Projects, research and articles
+├── now.html              AI-generated "Now" page
+├── css/style.css         All styles, organized by tokens, base, layout, components, pages
+├── js/
+│   ├── main.js           Entry module, runs setup for the current page
+│   ├── data.js           All site content (edit this to update the site)
+│   ├── render.js         DOM helpers and renderers
+│   ├── sky.js            Skill sky map component
+│   └── filter.js         Project filter by skill
+├── images/               Favicon, photo, screenshot
+├── docs/                 Design document and wireframe mockups
+├── eslint.config.js      ESLint config
+├── .prettierrc           Prettier config
+├── package.json
+└── LICENSE               MIT
 ```
 
-2. Run the development server:
-```bash
-npm run dev
-```
+## Instructions to build
 
-3. Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
+You need [Node.js](https://nodejs.org/) 18 or newer.
 
-## Project Structure
+1. Clone the repository and install the dev tools.
 
-```
-Portfolio/
-├── app/
-│   ├── globals.css      # Global styles
-│   ├── layout.tsx       # Root layout
-│   └── page.tsx         # Home page
-├── components/
-│   ├── Navigation.tsx   # Navigation bar
-│   ├── Hero.tsx         # Hero/Home section
-│   ├── About.tsx        # About section
-│   ├── Experience.tsx   # Experience section
-│   ├── Research.tsx     # Research section
-│   ├── Projects.tsx     # Projects section
-│   ├── Articles.tsx     # Articles section
-│   └── Contact.tsx      # Contact section
-└── package.json
-```
+   ```bash
+   git clone https://github.com/Drashti0913/TODO-repo-name.git
+   cd TODO-repo-name
+   npm install
+   ```
 
-## Customization
+2. Start a local server and open the site. ES modules don't load from `file://`, so use a server.
 
-### Update Your Information
+   ```bash
+   npm start
+   ```
 
-1. **Hero Section** (`components/Hero.tsx`): Update your name, title, and contact information
-2. **About Section** (`components/About.tsx`): Update your bio
-3. **Experience Section** (`components/Experience.tsx`): Add your work experience
-4. **Research Section** (`components/Research.tsx`): Add your research areas
-5. **Projects Section** (`components/Projects.tsx`): Add your projects with descriptions and links
-6. **Articles Section** (`components/Articles.tsx`): Add your publications
-7. **Contact Section** (`components/Contact.tsx`): Update social media links and contact form
+3. Check formatting and linting.
 
-### Styling
+   ```bash
+   npm run format
+   npm run lint
+   ```
 
-The website uses Tailwind CSS. You can customize colors, spacing, and other design elements in:
-- `tailwind.config.ts` - Tailwind configuration
-- `app/globals.css` - Global CSS variables and styles
-- Individual component files - Component-specific styles
-
-## Build for Production
-
-```bash
-npm run build
-npm start
-```
+To update the content, edit `js/data.js`. Each project's `skills` list must use ids from the `skills` list.
 
 ## Deployment
 
-This website can be easily deployed to:
-- **Vercel** (recommended for Next.js)
-- **Netlify**
-- **GitHub Pages** (with some configuration)
+The site is deployed with GitHub Pages from the `main` branch (Settings, then Pages, then "Deploy from a branch", then `main` and `/ (root)`).
 
-## Technologies Used
+## Use of generative AI
 
-- [Next.js](https://nextjs.org/) - React framework
-- [TypeScript](https://www.typescriptlang.org/) - Type safety
-- [Tailwind CSS](https://tailwindcss.com/) - Styling
-- [Lucide React](https://lucide.dev/) - Icons
+- **Tool and model:** Claude Opus 5.5 by Anthropic, used through claude.ai, in September 2026.
+- **What it was used for:**
+  - Converting the content of my earlier Next.js portfolio into a plain HTML, CSS and ES6 module structure that meets the assignment requirements.
+  - Drafting the code for the skill sky map and project filter.
+  - Generating the `now.html` page, which is the AI-generated page the assignment asks for.
+  - Drafting the wireframes, design document and this README.
+- **Prompts (summarized):**
+  - "Here is the assignment rubric and my current Next.js portfolio. Rebuild it in vanilla HTML, CSS and ES6 modules so it meets every rubric item."
+  - "Add an original interactive component that isn't a common portfolio feature."
+  - "Write a design document with a project description, user personas, user stories and mockups."
+- **What I reviewed and changed by hand:** TODO: list what you edited, for example your real content in `data.js`, wording changes, design tweaks, and anything you fixed or rewrote.
 
 ## License
 
-This project is open source and available under the MIT License.
-
+[MIT](./LICENSE)
