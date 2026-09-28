@@ -4,7 +4,7 @@ My personal homepage, built with vanilla HTML5, CSS3 and ES6 modules. It has no 
 
 - **Author:** Drashti Bhavsar ([GitHub](https://github.com/Drashti0913))
 - **Class:** TODO: course name and link to the course page
-- **Live site:** TODO: GitHub Pages URL
+- **Live site:** [drashti0913.github.io/Portfolio-DrashtiBhavsar](https://drashti0913.github.io/Portfolio-DrashtiBhavsar/)
 - **Demo video:** TODO: public video link
 - **Design document:** [docs/design-document.md](./docs/design-document.md)
 
@@ -19,7 +19,7 @@ Build a static homepage that helps recruiters, faculty and classmates understand
 | Page | File | What's on it |
 | --- | --- | --- |
 | Home | `index.html` | Intro, skill sky map, about, experience, education, contact |
-| Projects | `projects.html` | Projects filterable by skill, research, articles |
+| Projects | `projects.html` | Projects filterable by skill, research, publications |
 | Now | `now.html` | AI-generated page about what I'm focused on this season |
 
 ## Original component: skill sky map
@@ -38,7 +38,7 @@ The projects page also has a skill filter ([`js/filter.js`](./js/filter.js)) tha
 ```text
 .
 ├── index.html            Home page
-├── projects.html         Projects, research and articles
+├── projects.html         Projects, research and publications
 ├── now.html              AI-generated "Now" page
 ├── css/style.css         All styles, organized by tokens, base, layout, components, pages
 ├── js/
@@ -47,7 +47,7 @@ The projects page also has a skill filter ([`js/filter.js`](./js/filter.js)) tha
 │   ├── render.js         DOM helpers and renderers
 │   ├── sky.js            Skill sky map component
 │   └── filter.js         Project filter by skill
-├── images/               Favicon, photo, screenshot
+├── images/               Favicon, photos, screenshot
 ├── docs/                 Design document and wireframe mockups
 ├── eslint.config.js      ESLint config
 ├── .prettierrc           Prettier config
@@ -61,24 +61,24 @@ You need [Node.js](https://nodejs.org/) 18 or newer.
 
 1. Clone the repository and install the dev tools.
 
-   ```bash
-   git clone https://github.com/Drashti0913/TODO-repo-name.git
-   cd TODO-repo-name
+```bash
+   git clone https://github.com/Drashti0913/Portfolio-DrashtiBhavsar.git
+   cd Portfolio-DrashtiBhavsar
    npm install
-   ```
+```
 
 2. Start a local server and open the site. ES modules don't load from `file://`, so use a server.
 
-   ```bash
+```bash
    npm start
-   ```
+```
 
 3. Check formatting and linting.
 
-   ```bash
+```bash
    npm run format
    npm run lint
-   ```
+```
 
 To update the content, edit `js/data.js`. Each project's `skills` list must use ids from the `skills` list.
 
@@ -98,6 +98,7 @@ The site is deployed with GitHub Pages from the `main` branch (Settings, then Pa
   - "Here is the assignment rubric and my current Next.js portfolio. Rebuild it in vanilla HTML, CSS and ES6 modules so it meets every rubric item."
   - "Add an original interactive component that isn't a common portfolio feature."
   - "Write a design document with a project description, user personas, user stories and mockups."
+  - "Here are my old Next.js component files. Move my real content from them into data.js."
 - **What I reviewed and changed by hand:** TODO: list what you edited, for example your real content in `data.js`, wording changes, design tweaks, and anything you fixed or rewrote.
 
 ## License
