@@ -34,7 +34,7 @@ export function renderTimeline(list, items) {
     entry.append(
       el("p", "timeline__when", item.when),
       el("h3", "timeline__title", item.title),
-      el("p", "timeline__where", item.where),
+      el("p", "timeline__where", item.where)
     );
     if (item.summary) {
       entry.append(el("p", "timeline__summary", item.summary));
@@ -57,7 +57,7 @@ export function renderContact(list, profile) {
     const item = el("li", "contact__item");
     item.append(
       el("span", "contact__label", channel.label),
-      link(channel.href, channel.text, "contact__link"),
+      link(channel.href, channel.text, "contact__link")
     );
     return item;
   });
