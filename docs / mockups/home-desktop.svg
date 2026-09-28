@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" font-family="sans-serif" font-size="16" fill="#46506b">
+  <rect width="1200" height="1500" fill="#f7f8fa"/>
+  <text x="40" y="36" font-size="14" fill="#9aa5bc">Wireframe: Home page, desktop (1200px)</text>
+  <!-- nav -->
+  <rect x="60" y="60" width="1080" height="50" fill="none" stroke="#9aa5bc"/>
+  <text x="80" y="92" font-weight="bold">Drashti Bhavsar</text>
+  <text x="900" y="92">Home   Projects   Now</text>
+  <!-- hero left -->
+  <rect x="60" y="150" width="500" height="560" fill="none" stroke="#9aa5bc" stroke-dasharray="6 4"/>
+  <rect x="80" y="300" width="400" height="120" fill="#dfe3ea"/>
+  <text x="100" y="370" font-size="28">Name (large serif)</text>
+  <rect x="80" y="440" width="320" height="24" fill="#dfe3ea"/>
+  <text x="90" y="458" font-size="13">Role / program</text>
+  <rect x="80" y="480" width="420" height="60" fill="#eceff4"/>
+  <text x="90" y="515" font-size="13">Short intro, two lines</text>
+  <rect x="80" y="565" width="150" height="40" fill="#46506b"/>
+  <text x="100" y="590" font-size="13" fill="#fff">See my projects</text>
+  <rect x="245" y="565" width="110" height="40" fill="none" stroke="#46506b"/>
+  <text x="265" y="590" font-size="13">Email me</text>
+  <!-- hero right: sky -->
+  <text x="620" y="175" font-size="20">Skill sky map</text>
+  <text x="620" y="200" font-size="13">Hint: pick a star or a project</text>
+  <circle cx="850" cy="430" r="210" fill="#dfe3ea" stroke="#9aa5bc"/>
+  <circle cx="850" cy="430" r="140" fill="none" stroke="#9aa5bc" stroke-dasharray="4 4"/>
+  <circle cx="850" cy="430" r="70" fill="none" stroke="#9aa5bc" stroke-dasharray="4 4"/>
+  <g fill="#46506b">
+    <circle cx="850" cy="430" r="9"/><circle cx="780" cy="380" r="7"/><circle cx="930" cy="360" r="7"/>
+    <circle cx="900" cy="520" r="6"/><circle cx="770" cy="500" r="5"/><circle cx="860" cy="290" r="5"/>
+    <circle cx="990" cy="460" r="4"/><circle cx="720" cy="440" r="4"/>
+  </g>
+  <polyline points="780,380 850,430 930,360 900,520" fill="none" stroke="#46506b" stroke-width="2"/>
+  <text x="870" y="436" font-size="12">Skill label</text>
+  <text x="620" y="675" font-size="14" font-weight="bold">Projects</text>
+  <rect x="620" y="690" width="150" height="30" rx="15" fill="none" stroke="#46506b"/>
+  <rect x="780" y="690" width="170" height="30" rx="15" fill="#46506b"/>
+  <rect x="960" y="690" width="140" height="30" rx="15" fill="none" stroke="#46506b"/>
+  <rect x="620" y="740" width="480" height="80" fill="#eceff4"/>
+  <line x1="620" y1="740" x2="620" y2="820" stroke="#b8862b" stroke-width="4"/>
+  <text x="640" y="770" font-size="13">Readout: what the selection means + links</text>
+  <!-- sections -->
+  <line x1="60" y1="870" x2="1140" y2="870" stroke="#9aa5bc"/>
+  <text x="60" y="910" font-size="24">About</text>
+  <rect x="300" y="890" width="160" height="200" fill="#dfe3ea"/>
+  <text x="330" y="995" font-size="13">Photo</text>
+  <rect x="490" y="890" width="520" height="120" fill="#eceff4"/>
+  <text x="505" y="920" font-size="13">Bio paragraphs</text>
+  <line x1="60" y1="1130" x2="1140" y2="1130" stroke="#9aa5bc"/>
+  <text x="60" y="1170" font-size="24">Experience</text>
+  <line x1="310" y1="1150" x2="310" y2="1300" stroke="#9aa5bc"/>
+  <circle cx="310" cy="1165" r="6" fill="#b8862b"/><circle cx="310" cy="1245" r="6" fill="#b8862b"/>
+  <text x="330" y="1170" font-size="13">Dates, role, organization, one line</text>
+  <text x="330" y="1250" font-size="13">Dates, role, organization, one line</text>
+  <line x1="60" y1="1330" x2="1140" y2="1330" stroke="#9aa5bc"/>
+  <text x="60" y="1370" font-size="24">Education / Contact</text>
+  <text x="310" y="1370" font-size="13">Same margin-note layout: title left, content right</text>
+  <text x="60" y="1470" font-size="13">Footer: year, name, built with</text>
+</svg>
