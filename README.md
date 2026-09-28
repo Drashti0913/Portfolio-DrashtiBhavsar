@@ -3,7 +3,7 @@
 My personal homepage, built with vanilla HTML5, CSS3 and ES6 modules. It has no frameworks, no component libraries and no backend.
 
 - **Author:** Drashti Bhavsar ([GitHub](https://github.com/Drashti0913))
-- **Class:** [Web Development]([COURSE-LINK](https://northeastern.instructure.com/courses/261032))
+- **Class:** [Web Development](https://northeastern.instructure.com/courses/261032)
 - **Live site:** [drashti0913.github.io/Portfolio-DrashtiBhavsar](https://drashti0913.github.io/Portfolio-DrashtiBhavsar/)
 - **Demo video:** TODO: [public video link](https://youtu.be/GAaeQRXNaDw)
 - **Design document:** [docs/design-document.md](./docs/design-document.md)
