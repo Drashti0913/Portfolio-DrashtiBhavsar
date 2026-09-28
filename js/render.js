@@ -44,27 +44,30 @@ export function renderTimeline(list, items) {
       if (item.summary) {
         entry.append(el("p", "timeline__summary", item.summary));
       }
+      if (item.points && item.points.length > 0) {
+        const points = el("ul", "timeline__points");
+        item.points.forEach((point) => {
+          points.append(el("li", "timeline__point", point));
+        });
+        entry.append(points);
+      }
       return entry;
     }),
   );
 }
 
 export function renderContact(list, profile) {
-  const channels = [
-    { label: "Email", href: `mailto:${profile.email}`, text: profile.email },
-    { label: "GitHub", href: profile.links.github, text: "GitHub profile" },
-    { label: "LinkedIn", href: profile.links.linkedin, text: "LinkedIn profile" },
-  ].filter((channel) => channel.href && !channel.href.endsWith(":"));
-
   list.replaceChildren(
-    ...channels.map((channel) => {
-      const item = el("li", "contact__item");
-      item.append(
-        el("span", "contact__label", channel.label),
-        link(channel.href, channel.text, "contact__link"),
-      );
-      return item;
-    }),
+    ...profile.contact
+      .filter((channel) => channel.href)
+      .map((channel) => {
+        const item = el("li", "contact__item");
+        item.append(
+          el("span", "contact__label", channel.label),
+          link(channel.href, channel.text, "contact__link"),
+        );
+        return item;
+      }),
   );
 }
 
@@ -78,10 +81,14 @@ export function renderProjects(list, projects, skills) {
       article.dataset.skills = project.skills.join(" ");
 
       const body = el("div", "project__body");
-      body.append(
-        el("h3", "project__title", project.title),
-        el("p", "project__summary", project.summary),
-      );
+      body.append(el("h3", "project__title", project.title));
+      if (project.category) {
+        body.append(el("p", "project__meta", project.category));
+      }
+      body.append(el("p", "project__summary", project.summary));
+      if (project.tools) {
+        body.append(el("p", "project__tools", `Tools: ${project.tools}`));
+      }
 
       const tags = el("ul", "project__skills");
       tags.setAttribute("aria-label", "Skills used");
@@ -101,7 +108,7 @@ export function renderProjects(list, projects, skills) {
         body.append(links);
       }
 
-      article.append(el("p", "project__year", project.year), body);
+      article.append(body);
       return article;
     }),
   );
