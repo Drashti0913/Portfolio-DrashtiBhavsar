@@ -21,9 +21,8 @@ export function placeStars(skills, projects) {
     });
   });
 
-  const sorted = [...skills].sort(
-    (a, b) => counts.get(b.id) - counts.get(a.id),
-  );
+  const byUse = (a, b) => counts.get(b.id) - counts.get(a.id);
+  const sorted = [...skills].sort(byUse);
 
   return sorted.map((skill, index) => {
     const radius = SKY_RADIUS * Math.sqrt((index + 0.5) / sorted.length);
@@ -46,9 +45,11 @@ function orderAroundCenter(points) {
   }
   const cx = points.reduce((sum, point) => sum + point.x, 0) / points.length;
   const cy = points.reduce((sum, point) => sum + point.y, 0) / points.length;
-  const byAngle = points
-    .map((point) => ({ point, angle: Math.atan2(point.y - cy, point.x - cx) }))
-    .sort((a, b) => a.angle - b.angle);
+  const withAngles = points.map((point) => ({
+    point,
+    angle: Math.atan2(point.y - cy, point.x - cx),
+  }));
+  const byAngle = withAngles.sort((a, b) => a.angle - b.angle);
 
   let start = 0;
   let widestGap = -1;
@@ -61,9 +62,8 @@ function orderAroundCenter(points) {
     }
   });
 
-  return [...byAngle.slice(start), ...byAngle.slice(0, start)].map(
-    (item) => item.point,
-  );
+  const ordered = [...byAngle.slice(start), ...byAngle.slice(0, start)];
+  return ordered.map((item) => item.point);
 }
 
 function pluralize(count, word) {
@@ -78,28 +78,26 @@ export function initSky(root, { skills, projects }) {
   const projectList = root.querySelector(".sky__projects");
   const readout = root.querySelector(".sky__readout");
   const clearButton = root.querySelector(".sky__clear");
-  const idleReadout = [...readout.childNodes].map((node) =>
-    node.cloneNode(true),
-  );
+  const copy = (node) => node.cloneNode(true);
+  const idleReadout = [...readout.childNodes].map(copy);
   const starItems = new Map();
   const starButtons = new Map();
   const projectButtons = new Map();
   let selection = null;
 
   function drawLines(pairs) {
-    lineLayer.replaceChildren(
-      ...pairs.map(([from, to], index) => {
-        const line = document.createElementNS(SVG_NS, "line");
-        line.setAttribute("x1", from.x.toFixed(2));
-        line.setAttribute("y1", from.y.toFixed(2));
-        line.setAttribute("x2", to.x.toFixed(2));
-        line.setAttribute("y2", to.y.toFixed(2));
-        line.setAttribute("pathLength", "1");
-        line.classList.add("sky__line");
-        line.style.animationDelay = `${index * 90}ms`;
-        return line;
-      }),
-    );
+    const lines = pairs.map(([from, to], index) => {
+      const line = document.createElementNS(SVG_NS, "line");
+      line.setAttribute("x1", from.x.toFixed(2));
+      line.setAttribute("y1", from.y.toFixed(2));
+      line.setAttribute("x2", to.x.toFixed(2));
+      line.setAttribute("y2", to.y.toFixed(2));
+      line.setAttribute("pathLength", "1");
+      line.classList.add("sky__line");
+      line.style.animationDelay = `${index * 90}ms`;
+      return line;
+    });
+    lineLayer.replaceChildren(...lines);
   }
 
   function lightStars(ids) {
@@ -110,24 +108,17 @@ export function initSky(root, { skills, projects }) {
 
   function showSkill(skillId) {
     const star = starsById.get(skillId);
-    const usedIn = projects.filter((project) =>
-      project.skills.includes(skillId),
-    );
-    const neighbours = [
-      ...new Set(usedIn.flatMap((project) => project.skills)),
-    ].filter((id) => id !== skillId && starsById.has(id));
+    const usedIn = projects.filter((p) => p.skills.includes(skillId));
+    const related = new Set(usedIn.flatMap((p) => p.skills));
+    const isNeighbour = (id) => id !== skillId && starsById.has(id);
+    const neighbours = [...related].filter(isNeighbour);
 
     drawLines(neighbours.map((id) => [star, starsById.get(id)]));
     lightStars([skillId, ...neighbours]);
 
     if (usedIn.length === 0) {
-      readout.replaceChildren(
-        el(
-          "p",
-          "sky__readout-lead",
-          `${star.label} isn't part of a listed project yet.`,
-        ),
-      );
+      const message = `${star.label} isn't part of a listed project yet.`;
+      readout.replaceChildren(el("p", "sky__readout-lead", message));
       return;
     }
 
@@ -138,39 +129,34 @@ export function initSky(root, { skills, projects }) {
       list.append(item);
     });
 
+    const count = pluralize(usedIn.length, "project");
+    const lead = `${star.label} appears in ${count}.`;
+    const hint = "The lines lead to the skills it was used with.";
+    const filterUrl = `./projects.html?skill=${encodeURIComponent(skillId)}`;
+    const filterText = `See all ${star.label} projects`;
+
     readout.replaceChildren(
-      el(
-        "p",
-        "sky__readout-lead",
-        `${star.label} appears in ${pluralize(usedIn.length, "project")}. The lines lead to the skills it was used with.`,
-      ),
+      el("p", "sky__readout-lead", `${lead} ${hint}`),
       list,
-      link(
-        `./projects.html?skill=${encodeURIComponent(skillId)}`,
-        `See all ${star.label} projects`,
-        "sky__readout-link",
-      ),
+      link(filterUrl, filterText, "sky__readout-link"),
     );
   }
 
   function showProject(projectId) {
     const project = projects.find((item) => item.id === projectId);
-    const points = orderAroundCenter(
-      project.skills.map((id) => starsById.get(id)).filter(Boolean),
-    );
+    const skillStars = project.skills.map((id) => starsById.get(id));
+    const points = orderAroundCenter(skillStars.filter(Boolean));
     const pairs = points.slice(1).map((point, index) => [points[index], point]);
 
     drawLines(pairs);
     lightStars(points.map((point) => point.id));
 
+    const projectUrl = `./projects.html#project-${project.id}`;
+
     readout.replaceChildren(
       el("p", "sky__readout-lead", project.title),
       el("p", "sky__readout-text", project.summary),
-      link(
-        `./projects.html#project-${project.id}`,
-        "Read about this project",
-        "sky__readout-link",
-      ),
+      link(projectUrl, "Read about this project", "sky__readout-link"),
     );
   }
 
@@ -180,7 +166,8 @@ export function initSky(root, { skills, projects }) {
     clearButton.disabled = !active;
 
     starButtons.forEach((button, id) => {
-      const pressed = active && selection.type === "skill" && selection.id === id;
+      const pressed =
+        active && selection.type === "skill" && selection.id === id;
       button.setAttribute("aria-pressed", String(pressed));
     });
     projectButtons.forEach((button, id) => {
@@ -192,7 +179,7 @@ export function initSky(root, { skills, projects }) {
     if (!active) {
       lineLayer.replaceChildren();
       lightStars([]);
-      readout.replaceChildren(...idleReadout.map((node) => node.cloneNode(true)));
+      readout.replaceChildren(...idleReadout.map(copy));
       return;
     }
 
@@ -230,9 +217,9 @@ export function initSky(root, { skills, projects }) {
     const dot = el("span", "star__dot");
     dot.setAttribute("aria-hidden", "true");
     button.append(dot, el("span", "star__label", star.label));
-    button.addEventListener("click", () =>
-      toggle({ type: "skill", id: star.id }),
-    );
+    button.addEventListener("click", () => {
+      toggle({ type: "skill", id: star.id });
+    });
 
     item.append(button);
     starList.append(item);
@@ -244,9 +231,9 @@ export function initSky(root, { skills, projects }) {
     const item = el("li");
     const button = el("button", "chip", project.title);
     button.type = "button";
-    button.addEventListener("click", () =>
-      toggle({ type: "project", id: project.id }),
-    );
+    button.addEventListener("click", () => {
+      toggle({ type: "project", id: project.id });
+    });
     item.append(button);
     projectList.append(item);
     projectButtons.set(project.id, button);
