@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Drashti Bhavsar</title>
+    <meta name="author" content="Drashti Bhavsar" />
+    <meta
+      name="description"
+      content="Drashti Bhavsar's homepage: projects, research, experience and how to get in touch."
+    />
+    <link rel="icon" href="./images/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&amp;family=Public+Sans:wght@400;600&amp;display=swap"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+    <script type="module" src="./js/main.js"></script>
+  </head>
+  <body data-page="home">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <nav class="nav" aria-label="Main">
+        <a class="nav__brand" href="./index.html">Drashti Bhavsar</a>
+        <ul class="nav__menu">
+          <li>
+            <a class="nav__link" href="./index.html" aria-current="page"
+              >Home</a
+            >
+          </li>
+          <li><a class="nav__link" href="./projects.html">Projects</a></li>
+          <li><a class="nav__link" href="./now.html">Now</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="page" id="main">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero__text">
+          <h1 class="hero__name" id="hero-title">Drashti Bhavsar</h1>
+          <p class="hero__role">Graduate student</p>
+          <p class="hero__intro">
+            Projects, research and writing, all in one place.
+          </p>
+          <p class="hero__actions">
+            <a class="button button--primary" href="./projects.html"
+              >See my projects</a
+            >
+            <a class="button hero__email" href="#contact">Email me</a>
+          </p>
+        </div>
+
+        <section class="sky" aria-labelledby="sky-title">
+          <h2 class="sky__title" id="sky-title">Skill sky map</h2>
+          <p class="sky__hint">
+            Each star is a skill, and bigger stars appear in more projects. Pick
+            a star or a project to draw its constellation.
+          </p>
+          <div class="sky__chart">
+            <svg class="sky__svg" viewBox="0 0 100 100" aria-hidden="true">
+              <g class="sky__grid">
+                <circle cx="50" cy="50" r="46" />
+                <circle cx="50" cy="50" r="31" />
+                <circle cx="50" cy="50" r="16" />
+                <line x1="4" y1="50" x2="96" y2="50" />
+                <line x1="50" y1="4" x2="50" y2="96" />
+              </g>
+              <g class="sky__lines"></g>
+            </svg>
+            <ul class="sky__stars"></ul>
+          </div>
+          <h3 class="sky__subtitle">Projects</h3>
+          <ul class="sky__projects"></ul>
+          <div class="sky__readout" aria-live="polite">
+            <p class="sky__readout-text">No constellation drawn yet.</p>
+          </div>
+          <button class="button sky__clear" type="button">Clear the sky</button>
+        </section>
+      </section>
+
+      <section class="section" id="about" aria-labelledby="about-title">
+        <h2 class="section__title" id="about-title">About</h2>
+        <div class="section__body about">
+          <img
+            class="about__photo"
+            src="./images/profile-placeholder.svg"
+            alt="Portrait of Drashti Bhavsar"
+            width="240"
+            height="300"
+          />
+          <div class="about__bio"></div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="experience-title">
+        <h2 class="section__title" id="experience-title">Experience</h2>
+        <div class="section__body">
+          <ol class="timeline timeline--experience"></ol>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="education-title">
+        <h2 class="section__title" id="education-title">Education</h2>
+        <div class="section__body">
+          <ol class="timeline timeline--education"></ol>
+        </div>
+      </section>
+
+      <section class="section" id="contact" aria-labelledby="contact-title">
+        <h2 class="section__title" id="contact-title">Contact</h2>
+        <div class="section__body">
+          <p class="section__lede">
+            The fastest way to reach me is email. I usually reply within a day
+            or two.
+          </p>
+          <ul class="contact__list"></ul>
+        </div>
+      </section>
+
+      <noscript>
+        <p class="noscript">
+          Turn on JavaScript to see projects, experience and the skill sky map.
+        </p>
+      </noscript>
+    </main>
+
+    <footer class="site-footer">
+      <p>
+        © <span class="site-footer__year">2026</span> Drashti Bhavsar. Built
+        with HTML, CSS and JavaScript modules.
+      </p>
+    </footer>
+  </body>
+</html>

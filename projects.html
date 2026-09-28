@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Projects and research | Drashti Bhavsar</title>
+    <meta name="author" content="Drashti Bhavsar" />
+    <meta
+      name="description"
+      content="Projects, research and articles by Drashti Bhavsar, filterable by skill."
+    />
+    <link rel="icon" href="./images/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&amp;family=Public+Sans:wght@400;600&amp;display=swap"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+    <script type="module" src="./js/main.js"></script>
+  </head>
+  <body data-page="projects">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <nav class="nav" aria-label="Main">
+        <a class="nav__brand" href="./index.html">Drashti Bhavsar</a>
+        <ul class="nav__menu">
+          <li><a class="nav__link" href="./index.html">Home</a></li>
+          <li>
+            <a class="nav__link" href="./projects.html" aria-current="page"
+              >Projects</a
+            >
+          </li>
+          <li><a class="nav__link" href="./now.html">Now</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="page" id="main">
+      <header class="page-intro">
+        <h1 class="page-intro__title">Projects and research</h1>
+        <p class="page-intro__lede">
+          What I've built, what I'm studying and what I've written. Filter the
+          projects by skill to see where each one comes in.
+        </p>
+      </header>
+
+      <section class="section" aria-labelledby="projects-title">
+        <h2 class="section__title" id="projects-title">Projects</h2>
+        <div class="section__body">
+          <div
+            class="filter"
+            role="group"
+            aria-label="Filter projects by skill"
+          ></div>
+          <p class="filter__status" aria-live="polite"></p>
+          <div class="project-list"></div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="research-title">
+        <h2 class="section__title" id="research-title">Research</h2>
+        <div class="section__body">
+          <ul class="entry-list research-list"></ul>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="articles-title">
+        <h2 class="section__title" id="articles-title">Articles</h2>
+        <div class="section__body">
+          <ul class="entry-list article-list"></ul>
+        </div>
+      </section>
+
+      <noscript>
+        <p class="noscript">Turn on JavaScript to see the project list.</p>
+      </noscript>
+    </main>
+
+    <footer class="site-footer">
+      <p>
+        © <span class="site-footer__year">2026</span> Drashti Bhavsar. Built
+        with HTML, CSS and JavaScript modules.
+      </p>
+    </footer>
+  </body>
+</html>
