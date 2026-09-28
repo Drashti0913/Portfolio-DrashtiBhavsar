@@ -5,12 +5,14 @@ import { el } from "./render.js";
 
 export function initProjectFilter({ bar, list, status, skills }) {
   const rows = [...list.querySelectorAll(".project")];
-  const rowSkills = new Map(
-    rows.map((row) => [row, row.dataset.skills.split(" ")]),
-  );
-  const usedSkills = skills.filter((skill) =>
-    rows.some((row) => rowSkills.get(row).includes(skill.id)),
-  );
+  const rowSkills = new Map();
+  rows.forEach((row) => rowSkills.set(row, row.dataset.skills.split(" ")));
+
+  function isUsed(skill) {
+    return rows.some((row) => rowSkills.get(row).includes(skill.id));
+  }
+
+  const usedSkills = skills.filter(isUsed);
   const options = [{ id: "all", label: "All projects" }, ...usedSkills];
 
   const buttons = options.map((option) => {
@@ -39,11 +41,11 @@ export function initProjectFilter({ bar, list, status, skills }) {
       );
     });
 
-    const option = options.find((item) => item.id === skillId);
+    const { label } = options.find((item) => item.id === skillId);
     status.textContent =
       skillId === "all"
         ? `Showing all ${rows.length} projects.`
-        : `Showing ${shown} of ${rows.length} projects that use ${option.label}.`;
+        : `Showing ${shown} of ${rows.length} projects that use ${label}.`;
 
     if (updateUrl) {
       const url = new URL(window.location.href);
