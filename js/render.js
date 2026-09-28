@@ -24,7 +24,7 @@ export function link(href, text, className = "") {
 export function renderProfile(root, profile) {
   root.querySelector(".hero__role").textContent = profile.role;
   root.querySelector(".hero__intro").textContent = profile.intro;
-  root.querySelector(".hero__email").href = `mailto:${profile.email}`;
+ 
   root
     .querySelector(".about__bio")
     .replaceChildren(
