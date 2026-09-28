@@ -7,6 +7,7 @@ My personal homepage, built with vanilla HTML5, CSS3 and ES6 modules. It has no 
 - **Live site:** [drashti0913.github.io/Portfolio-DrashtiBhavsar](https://drashti0913.github.io/Portfolio-DrashtiBhavsar/)
 - **Demo video:** TODO: public video link
 - **Design document:** [docs/design-document.md](./docs/design-document.md)
+- ** Slides:** https://docs.google.com/presentation/d/19sa73-uGT1jtSlqy1ftlFkmx0rzad3mqYDV96R4nFz0/edit?usp=sharing
 
 ![Screenshot of the home page showing the skill sky map with a project constellation drawn](./images/screenshot.png)
 
