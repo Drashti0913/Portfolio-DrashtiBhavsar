@@ -37,7 +37,7 @@ export function initProjectFilter({ bar, list, status, skills }) {
     buttons.forEach((button) => {
       button.setAttribute(
         "aria-pressed",
-        String(button.dataset.skill === skillId),
+        String(button.dataset.skill === skillId)
       );
     });
 
@@ -62,3 +62,4 @@ export function initProjectFilter({ bar, list, status, skills }) {
   const isKnown = options.some((option) => option.id === requested);
   apply(isKnown ? requested : "all", false);
 }
+
