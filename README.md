@@ -16,11 +16,11 @@ Build a static homepage that helps recruiters, faculty and classmates understand
 
 ## Pages
 
-| Page | File | What's on it |
-| --- | --- | --- |
-| Home | `index.html` | Intro, skill sky map, about, experience, education, contact |
-| Projects | `projects.html` | Projects filterable by skill, research, publications |
-| Now | `now.html` | AI-generated page about what I'm focused on this season |
+| Page     | File            | What's on it                                                |
+| -------- | --------------- | ----------------------------------------------------------- |
+| Home     | `index.html`    | Intro, skill sky map, about, experience, education, contact |
+| Projects | `projects.html` | Projects filterable by skill, research, publications        |
+| Now      | `now.html`      | AI-generated page about what I'm focused on this season     |
 
 ## Original component: skill sky map
 
@@ -99,6 +99,8 @@ The site is deployed with GitHub Pages from the `main` branch (Settings, then Pa
   - "Add an original interactive component that isn't a common portfolio feature."
   - "Write a design document with a project description, user personas, user stories and mockups."
   - "Here are my old Next.js component files. Move my real content from them into data.js."
+  - "Show one large photo beside my bio in the About section, and make the Get in touch button scroll to the contact section."
+  - "Rewrite any lines Prettier would change so the code passes a Prettier check."
 - **What I reviewed and changed by hand:** TODO: list what you edited, for example your real content in `data.js`, wording changes, design tweaks, and anything you fixed or rewrote.
 
 ## License
