@@ -3,7 +3,7 @@
 My personal homepage, built with vanilla HTML5, CSS3 and ES6 modules. It has no frameworks, no component libraries and no backend.
 
 - **Author:** Drashti Bhavsar ([GitHub](https://github.com/Drashti0913))
-- **Class:** TODO: course name and link to the course page
+- **Class:** [COURSE NAME](COURSE-LINK)
 - **Live site:** [drashti0913.github.io/Portfolio-DrashtiBhavsar](https://drashti0913.github.io/Portfolio-DrashtiBhavsar/)
 - **Demo video:** TODO: public video link
 - **Design document:** [docs/design-document.md](./docs/design-document.md)
@@ -101,7 +101,7 @@ The site is deployed with GitHub Pages from the `main` branch (Settings, then Pa
   - "Here are my old Next.js component files. Move my real content from them into data.js."
   - "Show one large photo beside my bio in the About section, and make the Get in touch button scroll to the contact section."
   - "Rewrite any lines Prettier would change so the code passes a Prettier check."
-- **What I reviewed and changed by hand:** TODO: list what you edited, for example your real content in `data.js`, wording changes, design tweaks, and anything you fixed or rewrote.
+- **What I reviewed and changed by hand:** I checked every section against my old portfolio and chose which content and photo to use. I changed the About section to a single large photo and adjusted its size, replaced the "Email me" button with "Get in touch" so it works without an email app, and ran all three pages through the W3C validator. I reviewed the generated code before publishing it.
 
 ## License
 
