@@ -1,8 +1,10 @@
 // Entry point: renders every section from data.js and wires up the page's
-// small interactions (project filter, mobile menu, reveal on scroll).
+// interactions (rotating headline, hero photos, project filter, count-up
+// stats, scroll progress, spotlight, mobile menu, reveal on scroll).
 
 import {
   profile,
+  ticker,
   skillGroups,
   projectFilters,
   projects,
@@ -10,28 +12,95 @@ import {
   education,
   achievements,
   publications,
+  scholarStats,
+  photos,
 } from "./data.js";
 import {
+  el,
   renderProfile,
-  renderHighlights,
+  renderTicker,
+  renderStats,
   renderSkillGroups,
   renderFilters,
   renderProjects,
   renderExperience,
-  renderEducation,
-  renderAchievements,
+  renderScholar,
   renderPublications,
-  renderContact,
+  renderAchievements,
+  renderPhotos,
+  renderEducation,
 } from "./render.js";
 
-const INITIAL_PROJECTS = 6;
+const INITIAL_PROJECTS = 8;
 const listed = projects.filter((project) => project.code);
+const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 function setFooterYear() {
   const year = String(new Date().getFullYear());
   document.querySelectorAll(".site-footer__year").forEach((node) => {
     node.textContent = year;
   });
+}
+
+// Types and deletes each word in turn. Screen readers get one stable label.
+function initRotator() {
+  const word = document.querySelector(".hero__word");
+  const title = document.querySelector(".hero__title");
+  title.setAttribute(
+    "aria-label",
+    "Drashti Bhavsar. I build intelligent systems that actually ship."
+  );
+  if (reduced) {
+    word.textContent = profile.rotating[0];
+    return;
+  }
+  let index = 0;
+  let length = 0;
+  let deleting = false;
+  word.textContent = "";
+
+  function tick() {
+    const target = profile.rotating[index];
+    length += deleting ? -1 : 1;
+    word.textContent = target.slice(0, length);
+    let delay = deleting ? 40 : 85;
+    if (!deleting && length === target.length) {
+      deleting = true;
+      delay = 1800;
+    } else if (deleting && length === 0) {
+      deleting = false;
+      index = (index + 1) % profile.rotating.length;
+      delay = 350;
+    }
+    window.setTimeout(tick, delay);
+  }
+  tick();
+}
+
+// Crossfades the hero photo through the photo list.
+function initHeroPhotos() {
+  const frame = document.querySelector(".hero__frame");
+  const first = frame.querySelector(".hero__photo");
+  const images = [first];
+  photos.slice(1, 5).forEach((photo) => {
+    const img = el("img", "hero__photo");
+    img.src = photo.src;
+    img.alt = "";
+    img.loading = "lazy";
+    img.width = 618;
+    img.height = 1100;
+    frame.append(img);
+    images.push(img);
+  });
+  if (reduced) {
+    return;
+  }
+  let current = 0;
+  window.setInterval(() => {
+    images[current].classList.remove("is-active");
+    current = (current + 1) % images.length;
+    images[current].classList.add("is-active");
+  }, 3500);
 }
 
 function initProjects() {
@@ -55,6 +124,7 @@ function initProjects() {
       card.hidden = !visible;
       if (visible) {
         shown += 1;
+        card.classList.add("is-visible");
       }
     });
     const total = cards.filter(
@@ -80,6 +150,95 @@ function initProjects() {
     apply();
   });
   apply();
+
+  // Cards light up where the pointer is.
+  list.addEventListener("pointermove", (event) => {
+    const card = event.target.closest(".card");
+    if (!card) {
+      return;
+    }
+    const box = card.getBoundingClientRect();
+    card.style.setProperty("--mx", `${event.clientX - box.left}px`);
+    card.style.setProperty("--my", `${event.clientY - box.top}px`);
+  });
+}
+
+function countUp(node) {
+  const target = Number(node.dataset.target);
+  const decimals = String(target).includes(".") ? 1 : 0;
+  if (reduced) {
+    node.textContent = target.toFixed(decimals);
+    return;
+  }
+  const start = performance.now();
+  const duration = 1400;
+  function frame(now) {
+    const progress = Math.min((now - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    node.textContent = (target * eased).toFixed(decimals);
+    if (progress < 1) {
+      requestAnimationFrame(frame);
+    }
+  }
+  requestAnimationFrame(frame);
+}
+
+function initReveal() {
+  const targets = document.querySelectorAll(".reveal");
+  const counters = document.querySelectorAll(".count");
+  if (reduced || !("IntersectionObserver" in window)) {
+    counters.forEach(countUp);
+    return;
+  }
+  document.documentElement.classList.add("js-reveal");
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) {
+          return;
+        }
+        entry.target.classList.add("is-visible");
+        entry.target.querySelectorAll(".count").forEach(countUp);
+        observer.unobserve(entry.target);
+      });
+    },
+    { rootMargin: "0px 0px -8% 0px" }
+  );
+  targets.forEach((node) => observer.observe(node));
+}
+
+function initScrollEffects() {
+  const bar = document.querySelector(".progress");
+  const header = document.querySelector(".site-header");
+  const spotlight = document.querySelector(".spotlight");
+  function onScroll() {
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.transform = `scaleX(${max > 0 ? window.scrollY / max : 0})`;
+    header.classList.toggle("is-scrolled", window.scrollY > 8);
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+  if (!reduced && window.matchMedia("(pointer: fine)").matches) {
+    window.addEventListener("pointermove", (event) => {
+      spotlight.style.setProperty("--x", `${event.clientX}px`);
+      spotlight.style.setProperty("--y", `${event.clientY}px`);
+    });
+  }
+}
+
+function initCopyEmail() {
+  const button = document.querySelector(".contact__copy");
+  button.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(profile.email);
+      button.textContent = "Copied!";
+    } catch {
+      button.textContent = profile.email;
+    }
+    window.setTimeout(() => {
+      button.textContent = "Copy email";
+    }, 2200);
+  });
 }
 
 function initMenu() {
@@ -98,39 +257,24 @@ function initMenu() {
   });
 }
 
-function initReveal() {
-  const targets = document.querySelectorAll(".reveal");
-  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (reduced || !("IntersectionObserver" in window)) {
-    return;
-  }
-  document.documentElement.classList.add("js-reveal");
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { rootMargin: "0px 0px -8% 0px" }
-  );
-  targets.forEach((node) => observer.observe(node));
-}
-
 function init() {
   setFooterYear();
   renderProfile(document, profile);
-  renderHighlights(document.querySelector(".highlights"), profile.highlights);
+  renderTicker(document.querySelector(".ticker__track"), ticker);
+  renderStats(document.querySelector(".stats"), profile.highlights);
   renderSkillGroups(document.querySelector(".tiles"), skillGroups);
   initProjects();
   renderExperience(document.querySelector(".jobs"), experience);
-  renderAchievements(document.querySelector(".achievements"), achievements);
+  renderScholar(document.querySelector(".scholar"), scholarStats);
   renderPublications(document.querySelector(".pubs"), publications);
+  renderAchievements(document.querySelector(".achievements"), achievements);
+  renderPhotos(document.querySelector(".photo-strip__track"), photos);
   renderEducation(document.querySelector(".edus"), education);
-  renderContact(document.querySelector(".contact__list"), profile);
+  initRotator();
+  initHeroPhotos();
   initMenu();
+  initCopyEmail();
+  initScrollEffects();
   initReveal();
 }
 

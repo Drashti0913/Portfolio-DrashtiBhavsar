@@ -7,6 +7,7 @@ const ICONS = {
     '<path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4v11.5H3V9.75Zm6.5 0h3.83v1.57h.06c.53-1 1.84-2.07 3.79-2.07 4.05 0 4.8 2.67 4.8 6.13v5.87h-4v-5.2c0-1.24-.02-2.84-1.73-2.84-1.73 0-2 1.35-2 2.75v5.29h-4V9.75Z"/>',
   scholar:
     '<path d="M12 2 1 9l11 7 9-5.73V17h2V9L12 2Zm-6 10.95v4.3C6 19.3 8.7 21 12 21s6-1.7 6-3.75v-4.3l-6 3.82-6-3.82Z"/>',
+  x: '<path d="M17.75 3h3.07l-6.7 7.66L22 21h-6.17l-4.83-6.32L5.47 21H2.4l7.17-8.19L2 3h6.33l4.37 5.77L17.75 3Zm-1.08 16.17h1.7L7.4 4.74H5.58l11.1 14.43Z"/>',
   mail: '<path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm9 7.2L4.6 7h14.8L12 12.2ZM4 9.1V17h16V9.1l-8 5.6-8-5.6Z"/>',
   arrow:
     '<path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>',
@@ -56,177 +57,215 @@ function tagList(tags, className) {
   return list;
 }
 
-export function renderProfile(root, profile) {
-  root.querySelector(".hero__intro").textContent = profile.intro;
-  root.querySelector(".hero__status-text").textContent = profile.status;
-  const paragraphs = profile.bio.map((p) => el("p", "about__paragraph", p));
-  root.querySelector(".about__bio").replaceChildren(...paragraphs);
-
-  const actions = root.querySelector(".hero__actions");
-  if (profile.resume) {
-    actions.append(
-      link(profile.resume, "Resume", "button button--ghost", "download")
-    );
-  }
-  const socials = root.querySelector(".hero__links");
-  socials.replaceChildren(
-    ...[
-      ["GitHub", profile.github, "github"],
-      ["LinkedIn", profile.linkedin, "linkedin"],
-      ["Google Scholar", profile.scholar, "scholar"],
-    ].map(([label, href, name]) => {
-      const item = el("li");
-      item.append(link(href, label, "social", name));
-      return item;
-    })
-  );
+function pad(index) {
+  return String(index + 1).padStart(2, "0");
 }
 
-export function renderHighlights(list, highlights) {
-  const items = highlights.map((item) => {
-    const entry = el("li", "highlight");
-    entry.append(
-      el("span", "highlight__value", item.value),
-      el("span", "highlight__label", item.label)
-    );
-    return entry;
+export function renderProfile(root, profile) {
+  root.querySelector(".hero__status").textContent = profile.status;
+  root.querySelector(".hero__intro").textContent = profile.intro;
+  const bio = root.querySelector(".about__bio");
+  profile.bio.forEach((paragraph) => bio.append(el("p", "", paragraph)));
+
+  if (profile.resume) {
+    const resume = root.querySelector(".hero__resume");
+    resume.href = `./${profile.resume}`;
+    resume.textContent = "";
+    resume.append(icon("download"), document.createTextNode("Resume"));
+    resume.setAttribute("download", "");
+  }
+
+  const socials = [
+    { href: profile.github, label: "GitHub", icon: "github" },
+    { href: profile.linkedin, label: "LinkedIn", icon: "linkedin" },
+    { href: profile.scholar, label: "Google Scholar", icon: "scholar" },
+    { href: profile.twitter, label: "X", icon: "x" },
+    { href: `mailto:${profile.email}`, label: "Email", icon: "mail" },
+  ];
+  root.querySelectorAll(".socials").forEach((list) => {
+    socials.forEach((item) => {
+      const li = el("li");
+      const anchor = link(item.href, "", "socials__link", item.icon);
+      anchor.setAttribute("aria-label", item.label);
+      anchor.title = item.label;
+      li.append(anchor);
+      list.append(li);
+    });
   });
-  list.replaceChildren(...items);
+}
+
+export function renderTicker(track, words) {
+  // The list is doubled so the CSS loop can scroll half its width seamlessly.
+  [...words, ...words].forEach((word) => {
+    track.append(el("span", "ticker__item", word));
+  });
+}
+
+export function renderStats(list, highlights) {
+  highlights.forEach((item) => {
+    const li = el("li", "stat reveal");
+    const value = el("p", "stat__value");
+    const number = el("span", "count", String(item.value));
+    number.dataset.target = String(item.value);
+    value.append(number, document.createTextNode(item.suffix));
+    li.append(value, el("p", "stat__label", item.label));
+    list.append(li);
+  });
 }
 
 export function renderSkillGroups(list, groups) {
-  const items = groups.map((group, index) => {
-    const entry = el("li", "tile reveal");
-    entry.append(
-      el("span", "tile__index", String(index + 1).padStart(2, "0")),
+  groups.forEach((group, index) => {
+    const li = el("li", "tile reveal");
+    li.append(
+      el("p", "tile__index", pad(index)),
       el("h3", "tile__title", group.label),
       el("p", "tile__blurb", group.blurb),
       tagList(group.items, "tags")
     );
-    return entry;
+    list.append(li);
   });
-  list.replaceChildren(...items);
 }
 
 export function renderFilters(bar, filters, onSelect) {
-  const chips = filters.map((filter) => {
+  filters.forEach((filter) => {
     const chip = el("button", "chip", filter.label);
     chip.type = "button";
     chip.dataset.filter = filter.id;
-    chip.setAttribute("aria-pressed", "false");
+    chip.setAttribute("aria-pressed", String(filter.id === "all"));
     chip.addEventListener("click", () => onSelect(filter.id));
-    return chip;
+    bar.append(chip);
   });
-  bar.replaceChildren(...chips);
 }
 
 export function renderProjects(list, projects) {
-  const cards = projects.map((project) => {
+  projects.forEach((project, index) => {
     const card = el("article", "card reveal");
-    card.id = `project-${project.id}`;
+    if (project.featured) {
+      card.classList.add("card--featured");
+    }
     card.dataset.category = project.category;
 
-    const repo = project.code.replace("https://github.com/", "");
-    card.append(
-      el("p", "card__repo", repo.split("/")[1]),
-      el("h3", "card__title", project.title),
-      el("p", "card__summary", project.summary),
-      tagList(project.tags, "tags")
+    const top = el("div", "card__top");
+    top.append(
+      el("span", "card__index", pad(index)),
+      el("span", "card__metric", project.metric)
     );
 
     const links = el("p", "card__links");
-    links.append(link(project.code, "View on GitHub", "card__link", "github"));
-    project.extra.forEach((extra) => {
-      links.append(link(extra.href, extra.label, "card__link", "arrow"));
+    links.append(link(project.code, "Code", "card__link", "github"));
+    project.extra.forEach((item) => {
+      links.append(link(item.href, item.label, "card__link", "arrow"));
     });
-    card.append(links);
-    return card;
+
+    card.append(
+      top,
+      el("h3", "card__title", project.title),
+      el("p", "card__summary", project.summary),
+      tagList(project.tags, "tags"),
+      links
+    );
+    list.append(card);
   });
-  list.replaceChildren(...cards);
 }
 
 export function renderExperience(list, items) {
-  const entries = items.map((item) => {
-    const entry = el("li", "job reveal");
+  items.forEach((job) => {
+    const li = el("li", "job reveal");
     const head = el("div", "job__head");
-    head.append(
-      el("h3", "job__title", item.title),
-      el("p", "job__when", item.when)
+    const titles = el("div");
+    titles.append(
+      el("h3", "job__title", job.title),
+      el("p", "job__where", `${job.where} · ${job.place}`)
     );
+    const meta = el("div", "job__meta");
+    meta.append(el("p", "job__when", job.when), el("p", "job__win", job.win));
+    head.append(titles, meta);
+
     const points = el("ul", "job__points");
-    item.points.forEach((point) => points.append(el("li", "", point)));
-    entry.append(
-      head,
-      el("p", "job__where", item.where),
-      points,
-      tagList(item.tags, "tags")
-    );
-    return entry;
+    job.points.forEach((point) => points.append(el("li", "", point)));
+    li.append(head, points, tagList(job.tags, "tags"));
+    list.append(li);
   });
-  list.replaceChildren(...entries);
 }
 
-export function renderEducation(list, items) {
-  const entries = items.map((item) => {
-    const entry = el("li", "edu reveal");
-    entry.append(
-      el("p", "edu__degree", item.degree),
-      el("h3", "edu__field", item.field),
-      el("p", "edu__where", item.where),
-      el("p", "edu__when", [item.when, item.note].filter(Boolean).join(" · "))
-    );
-    return entry;
+export function renderScholar(list, stats) {
+  stats.forEach((item) => {
+    const li = el("li", "scholar__item reveal");
+    const number = el("span", "count", String(item.value));
+    number.dataset.target = String(item.value);
+    const value = el("p", "scholar__value");
+    value.append(number);
+    li.append(value, el("p", "scholar__label", item.label));
+    list.append(li);
   });
-  list.replaceChildren(...entries);
-}
-
-export function renderAchievements(list, items) {
-  const entries = items.map((item) => {
-    const entry = el("li", "tile tile--plain reveal");
-    entry.append(
-      el("h3", "tile__title", item.title),
-      el("p", "tile__blurb", item.text)
-    );
-    return entry;
-  });
-  list.replaceChildren(...entries);
 }
 
 export function renderPublications(list, items) {
-  const entries = items.map((item) => {
-    const entry = el("li", "pub reveal");
-    const title = el("h3", "pub__title");
-    if (item.url) {
-      title.append(link(item.url, item.title));
+  const most = Math.max(...items.map((item) => item.cites), 1);
+  items.forEach((pub) => {
+    const li = el("li", "pub reveal");
+    const title = pub.url
+      ? link(pub.url, pub.title, "pub__title")
+      : el("span", "pub__title", pub.title);
+    const meta = el("p", "pub__meta", `${pub.venue} · ${pub.year}`);
+    li.append(title, meta);
+
+    const cites = el("p", "pub__cites");
+    if (pub.cites) {
+      const bar = el("span", "pub__bar");
+      bar.style.setProperty("--w", `${(pub.cites / most) * 100}%`);
+      cites.append(bar, el("span", "pub__count", `${pub.cites} citations`));
     } else {
-      title.textContent = item.title;
+      cites.append(el("span", "pub__new", "New in 2026"));
     }
-    entry.append(el("span", "pub__venue", item.venue), title);
-    return entry;
+    li.append(cites);
+    list.append(li);
   });
-  list.replaceChildren(...entries);
 }
 
-export function renderContact(list, profile) {
-  const channels = [
-    ["Email", `mailto:${profile.email}`, profile.email, "mail"],
-    ["GitHub", profile.github, "github.com/Drashti0913", "github"],
-    [
-      "LinkedIn",
-      profile.linkedin,
-      "linkedin.com/in/drashtibhavsar9",
-      "linkedin",
-    ],
-    ["Scholar", profile.scholar, "Google Scholar profile", "scholar"],
-  ];
-  list.replaceChildren(
-    ...channels.map(([label, href, text, name]) => {
-      const item = el("li", "contact__item");
-      item.append(
-        el("span", "contact__label", label),
-        link(href, text, "contact__link", name)
-      );
-      return item;
-    })
-  );
+export function renderAchievements(list, items) {
+  items.forEach((item, index) => {
+    const li = el("li", "award reveal");
+    li.append(
+      el("p", "award__index", pad(index)),
+      el("h3", "award__title", item.title),
+      el("p", "award__org", item.org),
+      el("p", "award__text", item.text)
+    );
+    list.append(li);
+  });
+}
+
+export function renderPhotos(track, photos) {
+  // Doubled for a seamless loop. The copy is hidden from assistive tech.
+  [...photos, ...photos].forEach((photo, index) => {
+    const li = el("li", "photo");
+    if (index >= photos.length) {
+      li.setAttribute("aria-hidden", "true");
+    }
+    const img = el("img");
+    img.src = photo.src;
+    img.alt = index >= photos.length ? "" : photo.alt;
+    img.loading = "lazy";
+    img.width = 618;
+    img.height = 1100;
+    li.append(img, el("p", "photo__caption", photo.caption));
+    track.append(li);
+  });
+}
+
+export function renderEducation(list, items) {
+  items.forEach((item) => {
+    const li = el("li", "edu reveal");
+    li.append(
+      el("p", "edu__when", item.when),
+      el("h3", "edu__where", item.where),
+      el("p", "edu__degree", item.degree),
+      el("p", "edu__place", item.place)
+    );
+    if (item.note) {
+      li.append(el("p", "edu__note", item.note));
+    }
+    list.append(li);
+  });
 }
