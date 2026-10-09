@@ -1,6 +1,7 @@
 // All of the site's content lives in this file. Edit it to update the site.
-// Skill ids in each project must match an id in the skills list, or that
-// skill won't show up in the sky map or the project filter.
+// A project only shows up once it has a "code" link to its GitHub repo.
+
+const GITHUB = "https://github.com/Drashti0913";
 
 export const profile = {
   name: "Drashti Bhavsar",
@@ -12,65 +13,47 @@ export const profile = {
   // for example "Drashti-Bhavsar-Resume.pdf". Leave empty to hide the button.
   resume: "",
   intro:
-    "MS Computer Science student at Northeastern University. I build machine learning and LLM systems, from RAG pipelines to reinforcement learning, and I've done research at ISB, IIT Roorkee and ISRO.",
+    "MS Computer Science student at Northeastern University. I turn research into working software: RAG pipelines, search engines, reinforcement learning and computer vision, with research experience at ISB, IIT Roorkee and ISRO.",
   highlights: [
     { value: "3", label: "research internships: ISB, IIT Roorkee, ISRO" },
-    { value: "4", label: "publications, plus one accepted" },
+    { value: "4", label: "publications in Springer, Elsevier and EBSCO" },
     { value: "10,000+", label: "patent records analyzed with BERT" },
-    { value: "3.9", label: "GPA at Northeastern (out of 4.0)" },
+    { value: "3.9", label: "GPA at Northeastern, out of 4.0" },
   ],
   bio: [
     "I'm a graduate student at Northeastern University, pursuing my passion for Artificial Intelligence and Machine Learning, where I focus on building practical, high-impact intelligent systems. Over the past few years, I've worked with institutions like ISB, IIT Roorkee, and ISRO, contributing to projects in autonomous systems, patent analytics, and atmospheric prediction, giving me a unique blend of research depth and engineering execution.",
-    "I'm especially drawn to innovation at the intersection of AI, automation, and scalable systems, and I've published multiple papers in top-tier journals including Elsevier, Springer, and EBSCO.",
+    "I'm especially drawn to innovation at the intersection of AI, automation, and scalable systems, and I've published multiple papers in journals and books from Elsevier, Springer, and EBSCO.",
     "Alongside my technical work, I love exploring emerging AI developments, experimenting with new tools, and contributing to the open-source ecosystem. I aim to build technology that makes complex problems easier, smarter, and more human-centric.",
   ],
   email: "drashtibhavsar09@gmail.com",
-  contact: [
-    {
-      label: "Email",
-      href: "mailto:drashtibhavsar09@gmail.com",
-      text: "drashtibhavsar09@gmail.com",
-    },
-    {
-      label: "University",
-      href: "mailto:bhavsar.dr@northeastern.edu",
-      text: "bhavsar.dr@northeastern.edu",
-    },
-    {
-      label: "LinkedIn",
-      href: "https://www.linkedin.com/in/drashtibhavsar9/",
-      text: "linkedin.com/in/drashtibhavsar9",
-    },
-    {
-      label: "GitHub",
-      href: "https://github.com/Drashti0913",
-      text: "github.com/Drashti0913",
-    },
-    {
-      label: "Scholar",
-      href: "https://scholar.google.com/citations?user=qf2SqPsAAAAJ&hl=en&oi=ao",
-      text: "Google Scholar profile",
-    },
-  ],
+  github: GITHUB,
+  linkedin: "https://www.linkedin.com/in/drashtibhavsar9/",
+  scholar: "https://scholar.google.com/citations?user=qf2SqPsAAAAJ&hl=en&oi=ao",
 };
 
-export const skills = [
-  { id: "python", label: "Python" },
-  { id: "ml", label: "Machine learning" },
-  { id: "llm", label: "LLMs" },
-  { id: "nlp", label: "NLP and RAG" },
-  { id: "vector", label: "Vector search" },
-  { id: "docker", label: "Docker" },
-  { id: "xai", label: "Explainable AI" },
-  { id: "deep", label: "Deep learning" },
-  { id: "timeseries", label: "Time series" },
-  { id: "dataviz", label: "Data visualization" },
-];
-
-// Add a GitHub or demo link to a project by filling in "code" or "demo".
 export const skillGroups = [
   {
+    label: "LLMs and NLP",
+    blurb: "Retrieval, search and language models that stay grounded.",
+    items: ["RAG", "LangChain", "HuggingFace", "Qdrant", "pgvector", "spaCy"],
+  },
+  {
+    label: "Deep learning and RL",
+    blurb: "Vision, sequence models and agents that learn by doing.",
+    items: [
+      "PyTorch",
+      "TensorFlow",
+      "BERT",
+      "YOLOv5",
+      "DDPG",
+      "TD3",
+      "CARLA",
+      "Grad-CAM",
+    ],
+  },
+  {
     label: "Machine learning",
+    blurb: "Classical models, forecasting and explainability.",
     items: [
       "Scikit-learn",
       "XGBoost",
@@ -82,15 +65,8 @@ export const skillGroups = [
     ],
   },
   {
-    label: "Deep learning and RL",
-    items: ["BERT", "Transfer learning", "Grad-CAM", "DDPG", "TD3", "CARLA"],
-  },
-  {
-    label: "LLMs and NLP",
-    items: ["RAG", "LangChain", "HuggingFace", "Qdrant", "spaCy"],
-  },
-  {
     label: "Data and tooling",
+    blurb: "The everyday toolkit behind every project.",
     items: [
       "Python",
       "Pandas",
@@ -99,54 +75,157 @@ export const skillGroups = [
       "Seaborn",
       "Jupyter",
       "Docker",
+      "Git",
     ],
   },
 ];
 
+export const projectFilters = [
+  { id: "all", label: "All" },
+  { id: "llm", label: "LLMs and RAG" },
+  { id: "deep", label: "Deep learning and RL" },
+  { id: "ml", label: "ML and data" },
+  { id: "build", label: "Other builds" },
+];
+
+// category is one of the ids above. extra is an optional list of
+// { label, href } links, for example to a published paper.
 export const projects = [
   {
-    id: "mini-gpt",
-    title: "Mini GPT: QA Model from PDF",
-    category: "AI/ML, RAG and NLP",
+    id: "docmind",
+    title: "DocMind: PDF question answering",
+    category: "llm",
     summary:
-      "Architected a QA pipeline leveraging RAG and vector search to extract insights from PDF documents. Boosted document comprehension accuracy to 90% by embedding Qdrant vector stores with HuggingFace models.",
-    tools: "LangChain, HuggingFace, Qdrant, Docker, pyPDF",
-    skills: ["python", "nlp", "llm", "vector", "docker"],
-    code: "",
-    demo: "",
+      "A RAG pipeline that answers questions from PDF documents, grounding every answer in retrieved chunks. Reaches 90% document comprehension accuracy with BGE embeddings stored in Qdrant.",
+    tags: ["LangChain", "HuggingFace", "Qdrant", "Docker"],
+    code: `${GITHUB}/Question-Answering-Model-from-PDF-Documents`,
+    extra: [],
   },
   {
+    id: "email-rag",
+    title: "Personal Email RAG",
+    category: "llm",
+    summary:
+      "A local, private CLI that ingests email and attachments, retrieves passages with PostgreSQL and pgvector, and writes cited answers with Mistral through Ollama. Adds Gmail OAuth, row-level security and repeatable benchmarks.",
+    tags: ["Python", "pgvector", "Ollama", "Mistral"],
+    code: `${GITHUB}/Email-RAG`,
+    extra: [],
+  },
+  {
+    id: "patent-search",
+    title: "Patent claim hybrid search engine",
+    category: "llm",
+    summary:
+      "Search over vehicle patent applications with free-text queries, find-patents-like-this-one, and metadata filters. Blends BM25 with semantic scores, surfaces the best-matching claim, and includes a design for scaling to 10M patents.",
+    tags: ["Python", "BM25", "Semantic search"],
+    code: `${GITHUB}/Patent-Claim-Hybrid-Search-Engine`,
+    extra: [],
+  },
+  {
+    id: "simplification",
+    title: "Audience-aware scientific simplification",
+    category: "llm",
+    summary:
+      "Rewrites dense scientific abstracts for middle-school, general and undergraduate readers. Compares fine-tuned seq2seq models with an instruction-tuned LLM and measures the readability and faithfulness trade-off.",
+    tags: ["LLMs", "Prompt optimization", "Evaluation"],
+    code: `${GITHUB}/audience-aware-scientific-simplification`,
+    extra: [],
+  },
+  {
+    id: "autodrive",
+    title: "AutoDrive-HRL: autonomous overtaking",
+    category: "deep",
+    summary:
+      "Hierarchical deep reinforcement learning for lane changes and overtaking in the CARLA simulator, built at IIT Roorkee. Reaches a 94% success rate in simulated urban scenarios, with a 25% gain in decision accuracy.",
+    tags: ["PyTorch", "DDPG", "TD3", "CARLA"],
+    code: `${GITHUB}/Autonomous-Vehicle-Lane-Change-Maneuver-in-CARLA-Simulator`,
+    extra: [],
+  },
+  {
+    id: "dentai",
+    title: "DentAI: dental caries detection",
+    category: "deep",
+    summary:
+      "Compares five CNN architectures with transfer learning to detect dental caries from images, and uses Grad-CAM so the model's decisions can be inspected. Published in Springer.",
+    tags: ["TensorFlow", "Transfer learning", "Grad-CAM"],
+    code: `${GITHUB}/Teeth-Caries-Detection-using-Transfer-Learning`,
+    extra: [
+      {
+        label: "Paper",
+        href: "https://link.springer.com/article/10.1007/s12652-024-04795-x",
+      },
+    ],
+  },
+  {
+    id: "delivery",
+    title: "Traffic-aware delivery dispatch",
+    category: "deep",
+    summary:
+      "A Northeastern AI course project: a dispatch system that learns order assignment and traffic-aware routing from experience on a 5x5 city grid with three drivers and 30-minute deadlines.",
+    tags: ["Python", "Reinforcement learning", "Routing"],
+    code: `${GITHUB}/Dynamic-Multi-Order-Delivery-Optimization-with-Traffic-Aware-Routing`,
+    extra: [],
+  },
+  {
+    id: "platevision",
+    title: "PlateVision: license plate recognition",
+    category: "deep",
+    summary:
+      "Detects and reads license plates from surveillance video using YOLOv5, Haar cascades and Tesseract OCR, and identifies the Indian state from the plate pattern.",
+    tags: ["YOLOv5", "OpenCV", "Tesseract"],
+    code: `${GITHUB}/PlateVision-Real-Time-License-Plate-Detection-OCR-for-Surveillance-Cameras`,
+    extra: [],
+  },
+  {
+    id: "scriptnet",
+    title: "ScriptNet: handwriting recognition",
+    category: "deep",
+    summary:
+      "A 26.9M-parameter CRNN with a five-layer BiLSTM and CTC loss that reads handwritten words from the IAM dataset, trained end to end with no segmentation.",
+    tags: ["TensorFlow", "CRNN", "CTC"],
+    code: `${GITHUB}/Handwritten-Text-Prediction-using-Deep-Learning`,
+    extra: [],
+  },
+  {
+    id: "airsense",
+    title: "AirSense: air quality forecasting",
+    category: "ml",
+    summary:
+      "Forecasts air quality from five years of real data (2019 to 2023), comparing LSTM with SARIMA to show when deep learning beats classical statistics. Reaches 85% prediction accuracy.",
+    tags: ["LSTM", "SARIMA", "Time series"],
+    code: `${GITHUB}/Air-Quality-Forecasting-using-real-time-models-LSTM-and-SARIMA`,
+    extra: [],
+  },
+  {
+    id: "milkguard",
+    title: "MilkGuard: milk quality prediction",
+    category: "ml",
+    summary:
+      "Classifies milk quality across 1,000+ samples with SVM, decision tree and random forest models, cutting manual testing time by 70%. Published in EBSCO and covered by Gujarat Samachar.",
+    tags: ["Scikit-learn", "SVM", "Random Forest"],
+    code: `${GITHUB}/Milk-Quality-Prediction-using-SVM-Decision-Tree-and-Random-Forest`,
+    extra: [],
+  },
+  {
+    id: "flaretrader",
+    title: "FlareTrader: multi-asset DeFi platform",
+    category: "build",
+    summary:
+      "Built in 24 hours at the EasyA Hackathon: a trading interface for crypto, stocks and metals powered by live Flare FTSO price oracles on the Coston2 testnet.",
+    tags: ["Web3", "Ethers.js", "Flare FTSO"],
+    code: `${GITHUB}/Multi-Asset-DeFi-Platform-on-Flare-Netwo`,
+    extra: [],
+  },
+  {
+    // Add the repo link in "code" and this project will appear on the site.
     id: "credit-risk",
-    title: "Credit Card Risk Modeling",
-    category: "Machine learning, finance",
+    title: "Credit card risk modeling",
+    category: "ml",
     summary:
-      "Developed a binary classification model to identify high-risk credit card applicants using demographic and transaction data, improving default prediction accuracy to 93%. Applied SHAP analysis to enhance interpretability and transparency in financial decision-making models.",
-    tools: "Logistic Regression, XGBoost, SHAP, LLM chatbot",
-    skills: ["python", "ml", "xai", "llm"],
+      "A classifier that flags high-risk credit card applicants with 93% default prediction accuracy, using SHAP to keep financial decisions interpretable.",
+    tags: ["XGBoost", "SHAP", "Logistic regression"],
     code: "",
-    demo: "",
-  },
-  {
-    id: "milk-quality",
-    title: "Milk Quality Prediction",
-    category: "Data science, classification",
-    summary:
-      "Engineered supervised learning models to classify milk quality, automating testing for 1,000+ samples. Reduced manual testing time by 70%, streamlining quality assurance processes for potential use in dairy production.",
-    tools: "SVM, Decision Tree, Random Forest, Jupyter Notebook",
-    skills: ["python", "ml"],
-    code: "",
-    demo: "",
-  },
-  {
-    id: "air-quality",
-    title: "Real-time Air Quality Prediction",
-    category: "Time series, forecasting",
-    summary:
-      "Trained time-series forecasting models to monitor air pollution trends using LSTM and SARIMA. Delivered 85% prediction accuracy on unstructured data, enabling proactive planning in high-density urban regions.",
-    tools: "LSTM, SARIMA, Pandas, Scikit-learn, Matplotlib, NumPy",
-    skills: ["python", "ml", "deep", "timeseries", "dataviz"],
-    code: "",
-    demo: "",
+    extra: [],
   },
 ];
 
@@ -155,6 +234,7 @@ export const experience = [
     title: "AI/ML Research Intern",
     where: "Indian School of Business (ISB), Hyderabad, India",
     when: "Feb. 2025 to Jul. 2025",
+    tags: ["BERT", "spaCy", "Pandas", "Matplotlib"],
     points: [
       "Developed and analyzed a 10,000+ entry Indian patent dataset using Python, BERT, spaCy, and Pandas to classify AI vs. non-AI innovations and identify patterns by gender, industry, and timeline, achieving 92% accuracy.",
       "Built an end-to-end analytics report using Matplotlib, Seaborn, and Excel, identifying dominant innovation sectors such as healthcare and real estate, and highlighting trends across 20+ years of innovation data.",
@@ -164,6 +244,7 @@ export const experience = [
     title: "Junior Research Fellow",
     where: "IIT Roorkee, Google ExploreCSR, Roorkee, India",
     when: "Jan. 2024 to Jun. 2024",
+    tags: ["Deep RL", "DDPG", "TD3", "CARLA"],
     points: [
       "Designed and implemented a hierarchical deep reinforcement learning (DRL) framework to automate overtaking maneuvers in autonomous vehicles, segmented into lane-change and straight-driving sub-tasks.",
       "Applied DDPG and TD3 algorithms to enable precise continuous control (steering, throttle, braking) in complex, dynamic traffic scenarios using the CARLA Simulator, improving overtaking decision accuracy by 25%.",
@@ -174,6 +255,7 @@ export const experience = [
     title: "Data Science Research Intern",
     where: "Indian Space Research Organisation (ISRO), Ahmedabad, India",
     when: "Jun. 2023 to Aug. 2023",
+    tags: ["Random Forest", "Regression", "NavIC"],
     points: [
       'Contributed to the project "Weather Prediction using NavIC S-band Signals" by implementing Random Forest, Decision Tree, and Linear Regression, achieving 99.5% accuracy in detecting storm disruption on satellite signals.',
       "Analyzed ionospheric disturbances in NavIC and GPS signals (S1, L1, L5, CLKB) during storms, revealed significant correlations between S-band anomalies and storm activity, improving forecasting accuracy and signal reliability.",
@@ -183,81 +265,70 @@ export const experience = [
 
 export const education = [
   {
-    title: "Master of Science in Computer Science",
+    degree: "Master of Science",
+    field: "Computer Science",
     where: "Northeastern University, Boston, USA",
     when: "Expected May 2027",
-    summary: "GPA 3.9/4.0",
+    note: "GPA 3.9/4.0",
   },
   {
-    title: "Nanodegree, AI Programming with Python",
+    degree: "Nanodegree",
+    field: "AI Programming with Python",
     where: "Udacity, online",
     when: "Completed",
-    summary: "",
+    note: "",
   },
   {
-    title: "Bachelor of Technology in Computer Engineering",
+    degree: "Bachelor of Technology",
+    field: "Computer Engineering",
     where: "Pandit Deendayal Energy University, India",
     when: "May 2024",
-    summary: "GPA 3.77/4.0",
+    note: "GPA 3.77/4.0",
   },
 ];
 
-export const research = [
+export const achievements = [
   {
-    title: "Classifying AI innovation in Indian patents",
-    meta: "Indian School of Business, 2025",
-    summary:
-      "Used BERT, spaCy and Pandas on a 10,000+ entry patent dataset to separate AI from non-AI innovations and study patterns by gender, industry and timeline, reaching 92% accuracy.",
-    url: "",
+    title: "Published researcher",
+    text: "Four papers and chapters in Springer, Elsevier and EBSCO.",
   },
   {
-    title: "Hierarchical reinforcement learning for autonomous overtaking",
-    meta: "IIT Roorkee, Google ExploreCSR, 2024",
-    summary:
-      "Built a hierarchical DRL framework with DDPG and TD3 in the CARLA Simulator, splitting overtaking into lane-change and straight-driving sub-tasks and improving decision accuracy by 25%.",
-    url: "",
+    title: "Google ExploreCSR fellow",
+    text: "Junior Research Fellow at IIT Roorkee on autonomous driving.",
   },
   {
-    title: "Weather prediction using NavIC S-band signals",
-    meta: "ISRO, 2023",
-    summary:
-      "Applied Random Forest, Decision Tree and Linear Regression to detect storm disruption on satellite signals with 99.5% accuracy, and linked S-band anomalies to storm activity.",
-    url: "",
+    title: "In the press",
+    text: "MilkGuard, my milk quality model, was covered by Gujarat Samachar.",
   },
 ];
 
-export const articles = [
+export const publications = [
   {
     title:
       "A comprehensive and systematic study in smart drip and sprinkler irrigation systems",
-    meta: "Published in Elsevier",
-    summary: "",
+    venue: "Elsevier",
     url: "https://www.sciencedirect.com/science/article/pii/S2772375523001326",
   },
   {
     title: "Milk Quality Prediction Using Machine Learning",
-    meta: "Published in EBSCO",
-    summary: "",
+    venue: "EBSCO",
     url: "https://openurl.ebsco.com/EPDB%3Agcd%3A10%3A25038298/detailv2?sid=ebsco%3Aplink%3Ascholar&id=ebsco%3Agcd%3A183567171&crl=c&link_origin=scholar.google.com",
   },
   {
     title:
       "AI-enabled Dental caries detection using transfer learning & gradient-based class activation mapping",
-    meta: "Published in Springer",
-    summary: "",
+    venue: "Springer",
     url: "https://link.springer.com/article/10.1007/s12652-024-04795-x",
   },
   {
     title:
       "The Intersection of Industry 4.0 with Formula 1 and Other Motorsports: Future of Racing",
-    meta: "Published in Springer",
-    summary: "",
+    venue: "Springer",
     url: "https://link.springer.com/chapter/10.1007/978-981-97-3173-2_12",
   },
   {
     title: "AI-Based Air Quality Forecasting using LSTM and SARIMA",
-    meta: "Accepted",
-    summary: "",
+    venue: "Accepted",
     url: "",
   },
 ];

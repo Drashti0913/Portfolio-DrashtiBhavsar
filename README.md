@@ -17,35 +17,27 @@ Build a static homepage that helps recruiters, faculty and classmates understand
 
 ## Pages
 
-| Page     | File            | What's on it                                                                                  |
-| -------- | --------------- | --------------------------------------------------------------------------------------------- |
-| Home     | `index.html`    | Intro, availability, highlights, skill sky map, about, experience, skills, education, contact |
-| Projects | `projects.html` | Projects filterable by skill, research, publications                                          |
+| Page | File         | What's on it                                                                            |
+| ---- | ------------ | --------------------------------------------------------------------------------------- |
+| Home | `index.html` | Everything: hero, about, skills, projects, experience, publications, education, contact |
 
-## Original component: skill sky map
+## Features
 
-The home page shows my skills as stars on a round star chart. A star's size reflects how many of my projects use that skill.
-
-- Pick a **star** to draw lines to the skills it was used with and see the projects that use it. A link opens the projects page already filtered by that skill.
-- Pick a **project** to draw its constellation, connecting every skill it used.
-
-Stars are placed with a golden-angle spiral so the chart stays balanced as skills are added. The component uses real buttons, `aria-pressed`, a live region for the readout, and Escape to clear. The code is in [`js/sky.js`](./js/sky.js).
-
-The projects page also has a skill filter ([`js/filter.js`](./js/filter.js)) that keeps the selected skill in the URL, so filtered views can be shared.
+- Dark, single-page layout with a hero, skill tiles, projects, experience, publications, education and contact.
+- Twelve project cards, each linked to its GitHub repo, with a category filter.
+- Content lives in [`js/data.js`](./js/data.js). A project appears on the site once it has a `code` link.
+- SEO: page metadata, Open Graph card, JSON-LD, sitemap and robots.txt.
 
 ## Project structure
 
 ```text
 .
 ├── index.html            Home page
-├── projects.html         Projects, research and publications
 ├── css/style.css         All styles, organized by tokens, base, layout, components, pages
 ├── js/
-│   ├── main.js           Entry module, runs setup for the current page
+│   ├── main.js           Entry module: renders sections, filter, menu
 │   ├── data.js           All site content (edit this to update the site)
-│   ├── render.js         DOM helpers and renderers
-│   ├── sky.js            Skill sky map component
-│   └── filter.js         Project filter by skill
+│   └── render.js         DOM helpers and renderers
 ├── images/               Favicon, photos, screenshot
 ├── docs/                 Design document and wireframe mockups
 ├── eslint.config.js      ESLint config
