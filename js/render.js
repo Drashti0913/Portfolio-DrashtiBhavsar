@@ -24,8 +24,39 @@ export function link(href, text, className = "") {
 export function renderProfile(root, profile) {
   root.querySelector(".hero__role").textContent = profile.role;
   root.querySelector(".hero__intro").textContent = profile.intro;
+  root.querySelector(".hero__status-text").textContent = profile.status;
+  if (profile.resume) {
+    const resume = link(profile.resume, "Download resume", "button");
+    resume.setAttribute("download", "");
+    root.querySelector(".hero__actions").prepend(resume);
+  }
   const paragraphs = profile.bio.map((p) => el("p", "about__paragraph", p));
   root.querySelector(".about__bio").replaceChildren(...paragraphs);
+}
+
+export function renderHighlights(list, highlights) {
+  const items = highlights.map((item) => {
+    const entry = el("li", "highlight");
+    entry.append(
+      el("span", "highlight__value", item.value),
+      el("span", "highlight__label", item.label)
+    );
+    return entry;
+  });
+  list.replaceChildren(...items);
+}
+
+export function renderSkillGroups(list, groups) {
+  const items = groups.map((group) => {
+    const entry = el("li", "skill-group");
+    const tags = el("ul", "skill-group__items");
+    group.items.forEach((name) => {
+      tags.append(el("li", "skill-group__item", name));
+    });
+    entry.append(el("h3", "skill-group__label", group.label), tags);
+    return entry;
+  });
+  list.replaceChildren(...items);
 }
 
 export function renderTimeline(list, items) {

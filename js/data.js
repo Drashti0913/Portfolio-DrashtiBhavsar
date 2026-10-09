@@ -4,9 +4,21 @@
 
 export const profile = {
   name: "Drashti Bhavsar",
-  role: "AI/ML researcher and data scientist",
+  role: "AI/ML engineer and researcher",
+  status:
+    "Open to internships and full-time roles in AI/ML and data science. Graduating May 2027.",
+  location: "Boston, MA",
+  // Put your resume PDF in the repo root and set this to its file name,
+  // for example "Drashti-Bhavsar-Resume.pdf". Leave empty to hide the button.
+  resume: "",
   intro:
-    "Graduate student in Computer Science at Northeastern University, focused on building intelligent systems, advancing machine learning research, and creating solutions that drive real-world impact.",
+    "MS Computer Science student at Northeastern University. I build machine learning and LLM systems, from RAG pipelines to reinforcement learning, and I've done research at ISB, IIT Roorkee and ISRO.",
+  highlights: [
+    { value: "3", label: "research internships: ISB, IIT Roorkee, ISRO" },
+    { value: "4", label: "publications, plus one accepted" },
+    { value: "10,000+", label: "patent records analyzed with BERT" },
+    { value: "3.9", label: "GPA at Northeastern (out of 4.0)" },
+  ],
   bio: [
     "I'm a graduate student at Northeastern University, pursuing my passion for Artificial Intelligence and Machine Learning, where I focus on building practical, high-impact intelligent systems. Over the past few years, I've worked with institutions like ISB, IIT Roorkee, and ISRO, contributing to projects in autonomous systems, patent analytics, and atmospheric prediction, giving me a unique blend of research depth and engineering execution.",
     "I'm especially drawn to innovation at the intersection of AI, automation, and scalable systems, and I've published multiple papers in top-tier journals including Elsevier, Springer, and EBSCO.",
@@ -26,7 +38,7 @@ export const profile = {
     },
     {
       label: "LinkedIn",
-      href: "https://linkedin.com/in/drashtibhavsar9",
+      href: "https://www.linkedin.com/in/drashtibhavsar9/",
       text: "linkedin.com/in/drashtibhavsar9",
     },
     {
@@ -38,16 +50,6 @@ export const profile = {
       label: "Scholar",
       href: "https://scholar.google.com/citations?user=qf2SqPsAAAAJ&hl=en&oi=ao",
       text: "Google Scholar profile",
-    },
-    {
-      label: "X",
-      href: "https://x.com/BhavsarDrashti2",
-      text: "@BhavsarDrashti2",
-    },
-    {
-      label: "Instagram",
-      href: "https://www.instagram.com/_drashti09",
-      text: "@_drashti09",
     },
   ],
 };
@@ -66,6 +68,41 @@ export const skills = [
 ];
 
 // Add a GitHub or demo link to a project by filling in "code" or "demo".
+export const skillGroups = [
+  {
+    label: "Machine learning",
+    items: [
+      "Scikit-learn",
+      "XGBoost",
+      "Random Forest",
+      "SVM",
+      "SHAP",
+      "LSTM",
+      "SARIMA",
+    ],
+  },
+  {
+    label: "Deep learning and RL",
+    items: ["BERT", "Transfer learning", "Grad-CAM", "DDPG", "TD3", "CARLA"],
+  },
+  {
+    label: "LLMs and NLP",
+    items: ["RAG", "LangChain", "HuggingFace", "Qdrant", "spaCy"],
+  },
+  {
+    label: "Data and tooling",
+    items: [
+      "Python",
+      "Pandas",
+      "NumPy",
+      "Matplotlib",
+      "Seaborn",
+      "Jupyter",
+      "Docker",
+    ],
+  },
+];
+
 export const projects = [
   {
     id: "mini-gpt",

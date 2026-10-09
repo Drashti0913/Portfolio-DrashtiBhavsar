@@ -4,7 +4,7 @@ My personal homepage, built with vanilla HTML5, CSS3 and ES6 modules. It has no 
 
 - **Author:** Drashti Bhavsar ([GitHub](https://github.com/Drashti0913))
 - **Class:** [Web Development](https://northeastern.instructure.com/courses/261032)
-- **Live site:** [drashti0913.github.io/Portfolio-DrashtiBhavsar](https://drashti0913.github.io/Portfolio-DrashtiBhavsar/)
+- **Live site:** [drashtibhavsar.com](https://drashtibhavsar.com)
 - **Demo video:** : [public video link](https://youtu.be/GAaeQRXNaDw)
 - **Design document:** [docs/design-document.md](./docs/design-document.md)
 - ** Slides:** https://docs.google.com/presentation/d/19sa73-uGT1jtSlqy1ftlFkmx0rzad3mqYDV96R4nFz0/edit?usp=sharing
@@ -17,11 +17,10 @@ Build a static homepage that helps recruiters, faculty and classmates understand
 
 ## Pages
 
-| Page     | File            | What's on it                                                |
-| -------- | --------------- | ----------------------------------------------------------- |
-| Home     | `index.html`    | Intro, skill sky map, about, experience, education, contact |
-| Projects | `projects.html` | Projects filterable by skill, research, publications        |
-| Now      | `now.html`      | AI-generated page about what I'm focused on this season     |
+| Page     | File            | What's on it                                                                                  |
+| -------- | --------------- | --------------------------------------------------------------------------------------------- |
+| Home     | `index.html`    | Intro, availability, highlights, skill sky map, about, experience, skills, education, contact |
+| Projects | `projects.html` | Projects filterable by skill, research, publications                                          |
 
 ## Original component: skill sky map
 
@@ -40,7 +39,6 @@ The projects page also has a skill filter ([`js/filter.js`](./js/filter.js)) tha
 .
 ├── index.html            Home page
 ├── projects.html         Projects, research and publications
-├── now.html              AI-generated "Now" page
 ├── css/style.css         All styles, organized by tokens, base, layout, components, pages
 ├── js/
 │   ├── main.js           Entry module, runs setup for the current page

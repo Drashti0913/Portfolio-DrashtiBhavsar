@@ -4,6 +4,7 @@
 import {
   profile,
   skills,
+  skillGroups,
   projects,
   experience,
   education,
@@ -12,6 +13,8 @@ import {
 } from "./data.js";
 import {
   renderProfile,
+  renderHighlights,
+  renderSkillGroups,
   renderTimeline,
   renderContact,
   renderProjects,
@@ -38,6 +41,8 @@ function highlightLinkedProject() {
 
 function initHome() {
   renderProfile(document, profile);
+  renderHighlights(document.querySelector(".highlights"), profile.highlights);
+  renderSkillGroups(document.querySelector(".skill-groups"), skillGroups);
   renderTimeline(document.querySelector(".timeline--experience"), experience);
   renderTimeline(document.querySelector(".timeline--education"), education);
   renderContact(document.querySelector(".contact__list"), profile);

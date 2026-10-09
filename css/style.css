@@ -780,3 +780,127 @@ img {
     transition: none;
   }
 }
+
+/* 7. Job-search additions
+   -------------------------------------------------------------------------- */
+.nav__link--cta {
+  padding: 0.3rem 0.8rem;
+  border: 1px solid var(--ink);
+  border-radius: 0.25rem;
+  color: var(--ink);
+}
+
+.nav__link--cta:hover {
+  background: var(--ink);
+  color: var(--paper);
+  text-decoration: none;
+}
+
+.hero__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: var(--space-m);
+  padding: 0.4rem 0.9rem;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: var(--paper-deep);
+  font-family: var(--font-sans);
+  font-size: var(--step--1);
+  line-height: 1.35;
+}
+
+.hero__status-dot {
+  flex: none;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: #2f8f5b;
+}
+
+.hero__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-m);
+  margin: var(--space-m) 0 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--font-sans);
+  font-size: var(--step--1);
+}
+
+.highlights {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-m);
+  margin: 0;
+  padding: var(--space-l) 0;
+  border-top: 1px solid var(--rule);
+  list-style: none;
+}
+
+.highlight {
+  display: grid;
+  gap: 0.25rem;
+  align-content: start;
+}
+
+.highlight__value {
+  font-size: var(--step-3);
+  line-height: 1;
+}
+
+.highlight__label {
+  color: var(--ink-soft);
+  font-family: var(--font-sans);
+  font-size: var(--step--1);
+  line-height: 1.4;
+}
+
+.skill-groups {
+  display: grid;
+  gap: var(--space-m);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.skill-group__label {
+  margin-bottom: 0.4rem;
+  color: var(--ink-soft);
+  font-family: var(--font-sans);
+  font-size: var(--step--1);
+  font-weight: 600;
+}
+
+.skill-group__items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.skill-group__item {
+  padding: 0.25rem 0.7rem;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  font-family: var(--font-sans);
+  font-size: var(--step--1);
+}
+
+.about__photo {
+  aspect-ratio: 1;
+  object-position: 50% 20%;
+}
+
+@media (max-width: 56rem) {
+  .highlights {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .about__photo {
+    max-width: 20rem;
+  }
+}

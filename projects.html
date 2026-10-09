@@ -3,11 +3,50 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Projects and research | Drashti Bhavsar</title>
+    <title>Projects, Research and Publications | Drashti Bhavsar</title>
     <meta name="author" content="Drashti Bhavsar" />
     <meta
       name="description"
-      content="Projects, research and publications by Drashti Bhavsar, with projects filterable by skill."
+      content="Machine learning, LLM and RAG projects, research and publications by Drashti Bhavsar. Filter projects by skill."
+    />
+    <meta name="theme-color" content="#16213d" />
+    <link rel="canonical" href="https://drashtibhavsar.com/projects.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Drashti Bhavsar" />
+    <meta
+      property="og:title"
+      content="Projects, Research and Publications | Drashti Bhavsar"
+    />
+    <meta
+      property="og:description"
+      content="Machine learning, LLM and RAG projects, research and publications by Drashti Bhavsar. Filter projects by skill."
+    />
+    <meta
+      property="og:url"
+      content="https://drashtibhavsar.com/projects.html"
+    />
+    <meta
+      property="og:image"
+      content="https://drashtibhavsar.com/images/og-image.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Drashti Bhavsar, AI/ML engineer and researcher"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Projects, Research and Publications | Drashti Bhavsar"
+    />
+    <meta
+      name="twitter:description"
+      content="Machine learning, LLM and RAG projects, research and publications by Drashti Bhavsar. Filter projects by skill."
+    />
+    <meta
+      name="twitter:image"
+      content="https://drashtibhavsar.com/images/og-image.png"
     />
     <link rel="icon" href="./images/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -26,13 +65,28 @@
       <nav class="nav" aria-label="Main">
         <a class="nav__brand" href="./index.html">Drashti Bhavsar</a>
         <ul class="nav__menu">
-          <li><a class="nav__link" href="./index.html">Home</a></li>
+          <li><a class="nav__link" href="./index.html#about">About</a></li>
+          <li>
+            <a class="nav__link" href="./index.html#experience">Experience</a>
+          </li>
           <li>
             <a class="nav__link" href="./projects.html" aria-current="page"
               >Projects</a
             >
           </li>
-          <li><a class="nav__link" href="./now.html">Now</a></li>
+          <li>
+            <a class="nav__link" href="./projects.html#publications"
+              >Publications</a
+            >
+          </li>
+          <li>
+            <a class="nav__link" href="./index.html#education">Education</a>
+          </li>
+          <li>
+            <a class="nav__link nav__link--cta" href="./index.html#contact"
+              >Contact</a
+            >
+          </li>
         </ul>
       </nav>
     </header>
@@ -46,7 +100,7 @@
         </p>
       </header>
 
-      <section class="section" aria-labelledby="projects-title">
+      <section class="section" id="projects" aria-labelledby="projects-title">
         <h2 class="section__title" id="projects-title">Projects</h2>
         <div class="section__body">
           <div
@@ -59,14 +113,18 @@
         </div>
       </section>
 
-      <section class="section" aria-labelledby="research-title">
+      <section class="section" id="research" aria-labelledby="research-title">
         <h2 class="section__title" id="research-title">Research</h2>
         <div class="section__body">
           <ul class="entry-list research-list"></ul>
         </div>
       </section>
 
-      <section class="section" aria-labelledby="publications-title">
+      <section
+        class="section"
+        id="publications"
+        aria-labelledby="publications-title"
+      >
         <h2 class="section__title" id="publications-title">Publications</h2>
         <div class="section__body">
           <ul class="entry-list article-list"></ul>

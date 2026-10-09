@@ -3,13 +3,89 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Drashti Bhavsar</title>
+    <title>
+      Drashti Bhavsar | AI/ML Engineer and Researcher | Northeastern MS CS
+    </title>
     <meta name="author" content="Drashti Bhavsar" />
     <meta
       name="description"
-      content="Drashti Bhavsar, AI/ML researcher, data scientist and MS Computer Science student at Northeastern University. Projects, research, publications and contact."
+      content="Drashti Bhavsar is an AI/ML engineer and researcher, MS Computer Science student at Northeastern University, seeking internships and full-time roles. Projects, research, publications and contact."
+    />
+    <meta name="theme-color" content="#16213d" />
+    <link rel="canonical" href="https://drashtibhavsar.com/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Drashti Bhavsar" />
+    <meta
+      property="og:title"
+      content="Drashti Bhavsar | AI/ML Engineer and Researcher | Northeastern MS CS"
+    />
+    <meta
+      property="og:description"
+      content="Drashti Bhavsar is an AI/ML engineer and researcher, MS Computer Science student at Northeastern University, seeking internships and full-time roles. Projects, research, publications and contact."
+    />
+    <meta property="og:url" content="https://drashtibhavsar.com/" />
+    <meta
+      property="og:image"
+      content="https://drashtibhavsar.com/images/og-image.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Drashti Bhavsar, AI/ML engineer and researcher"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Drashti Bhavsar | AI/ML Engineer and Researcher | Northeastern MS CS"
+    />
+    <meta
+      name="twitter:description"
+      content="Drashti Bhavsar is an AI/ML engineer and researcher, MS Computer Science student at Northeastern University, seeking internships and full-time roles. Projects, research, publications and contact."
+    />
+    <meta
+      name="twitter:image"
+      content="https://drashtibhavsar.com/images/og-image.png"
     />
     <link rel="icon" href="./images/favicon.svg" type="image/svg+xml" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Drashti Bhavsar",
+        "url": "https://drashtibhavsar.com/",
+        "image": "https://drashtibhavsar.com/images/drashti-headshot.jpg",
+        "jobTitle": "AI/ML Engineer and Researcher",
+        "description": "MS Computer Science student at Northeastern University building machine learning and LLM systems.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Boston",
+          "addressRegion": "MA",
+          "addressCountry": "US"
+        },
+        "alumniOf": [
+          { "@type": "CollegeOrUniversity", "name": "Northeastern University" },
+          {
+            "@type": "CollegeOrUniversity",
+            "name": "Pandit Deendayal Energy University"
+          }
+        ],
+        "knowsAbout": [
+          "Machine learning",
+          "Large language models",
+          "Retrieval-augmented generation",
+          "Deep reinforcement learning",
+          "Natural language processing",
+          "Explainable AI",
+          "Time series forecasting"
+        ],
+        "sameAs": [
+          "https://www.linkedin.com/in/drashtibhavsar9/",
+          "https://github.com/Drashti0913",
+          "https://scholar.google.com/citations?user=qf2SqPsAAAAJ"
+        ]
+      }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -26,13 +102,24 @@
       <nav class="nav" aria-label="Main">
         <a class="nav__brand" href="./index.html">Drashti Bhavsar</a>
         <ul class="nav__menu">
+          <li><a class="nav__link" href="./index.html#about">About</a></li>
           <li>
-            <a class="nav__link" href="./index.html" aria-current="page"
-              >Home</a
-            >
+            <a class="nav__link" href="./index.html#experience">Experience</a>
           </li>
           <li><a class="nav__link" href="./projects.html">Projects</a></li>
-          <li><a class="nav__link" href="./now.html">Now</a></li>
+          <li>
+            <a class="nav__link" href="./projects.html#publications"
+              >Publications</a
+            >
+          </li>
+          <li>
+            <a class="nav__link" href="./index.html#education">Education</a>
+          </li>
+          <li>
+            <a class="nav__link nav__link--cta" href="./index.html#contact"
+              >Contact</a
+            >
+          </li>
         </ul>
       </nav>
     </header>
@@ -40,19 +127,43 @@
     <main class="page" id="main">
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero__text">
+          <p class="hero__status">
+            <span class="hero__status-dot" aria-hidden="true"></span>
+            <span class="hero__status-text"></span>
+          </p>
           <h1 class="hero__name" id="hero-title">Drashti Bhavsar</h1>
-          <p class="hero__role">AI/ML researcher and data scientist</p>
-          <p class="hero__intro">
-            Graduate student in Computer Science at Northeastern University,
-            focused on building intelligent systems and machine learning
-            research with real-world impact.
-          </p>
+          <p class="hero__role">AI/ML engineer and researcher</p>
+          <p class="hero__intro"></p>
           <p class="hero__actions">
-            <a class="button button--primary" href="./projects.html"
-              >See my projects</a
-            >
-            <a class="button hero__email" href="#contact">Get in touch</a>
+            <a class="button button--primary" href="#contact">Get in touch</a>
+            <a class="button" href="./projects.html">See my work</a>
           </p>
+          <ul class="hero__links" aria-label="Profiles">
+            <li>
+              <a
+                href="https://www.linkedin.com/in/drashtibhavsar9/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >LinkedIn</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://github.com/Drashti0913"
+                target="_blank"
+                rel="noopener noreferrer"
+                >GitHub</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://scholar.google.com/citations?user=qf2SqPsAAAAJ&amp;hl=en&amp;oi=ao"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Google Scholar</a
+              >
+            </li>
+          </ul>
         </div>
 
         <section class="sky" aria-labelledby="sky-title">
@@ -83,28 +194,41 @@
         </section>
       </section>
 
+      <ul class="highlights" aria-label="At a glance"></ul>
+
       <section class="section" id="about" aria-labelledby="about-title">
         <h2 class="section__title" id="about-title">About</h2>
         <div class="section__body about">
+          <div class="about__bio"></div>
           <img
             class="about__photo"
-            src="./images/1000145285.jpg"
-            alt="Portrait of Drashti Bhavsar"
-            width="480"
+            src="./images/drashti-headshot.jpg"
+            alt="Drashti Bhavsar at Northeastern University"
+            width="640"
             height="640"
           />
-          <div class="about__bio"></div>
         </div>
       </section>
 
-      <section class="section" aria-labelledby="experience-title">
+      <section
+        class="section"
+        id="experience"
+        aria-labelledby="experience-title"
+      >
         <h2 class="section__title" id="experience-title">Experience</h2>
         <div class="section__body">
           <ol class="timeline timeline--experience"></ol>
         </div>
       </section>
 
-      <section class="section" aria-labelledby="education-title">
+      <section class="section" id="skills" aria-labelledby="skills-title">
+        <h2 class="section__title" id="skills-title">Technical skills</h2>
+        <div class="section__body">
+          <ul class="skill-groups"></ul>
+        </div>
+      </section>
+
+      <section class="section" id="education" aria-labelledby="education-title">
         <h2 class="section__title" id="education-title">Education</h2>
         <div class="section__body">
           <ol class="timeline timeline--education"></ol>
@@ -115,7 +239,8 @@
         <h2 class="section__title" id="contact-title">Contact</h2>
         <div class="section__body">
           <p class="section__lede">
-            Say hello by email, or find me on any of the sites below.
+            I'm looking for AI/ML and data science internships and full-time
+            roles. The fastest way to reach me is email, and I reply quickly.
           </p>
           <ul class="contact__list"></ul>
         </div>
@@ -124,6 +249,9 @@
       <noscript>
         <p class="noscript">
           Turn on JavaScript to see projects, experience and the skill sky map.
+          You can also find me on
+          <a href="https://www.linkedin.com/in/drashtibhavsar9/">LinkedIn</a>
+          and <a href="https://github.com/Drashti0913">GitHub</a>.
         </p>
       </noscript>
     </main>

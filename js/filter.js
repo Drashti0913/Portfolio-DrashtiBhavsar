@@ -62,4 +62,3 @@ export function initProjectFilter({ bar, list, status, skills }) {
   const isKnown = options.some((option) => option.id === requested);
   apply(isKnown ? requested : "all", false);
 }
-
