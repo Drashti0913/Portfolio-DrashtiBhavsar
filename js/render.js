@@ -67,13 +67,19 @@ export function renderProfile(root, profile) {
   const bio = root.querySelector(".about__bio");
   profile.bio.forEach((paragraph) => bio.append(el("p", "", paragraph)));
 
-  if (profile.resume) {
-    const resume = root.querySelector(".hero__resume");
-    resume.href = `./${profile.resume}`;
-    resume.textContent = "";
-    resume.append(icon("download"), document.createTextNode("Resume"));
-    resume.setAttribute("download", "");
-  }
+  root.querySelectorAll(".resume-links").forEach((slot) => {
+    profile.resumes.forEach((resume) => {
+      const anchor = link(
+        `./${resume.file}`,
+        resume.label,
+        "button button--ghost",
+        "download"
+      );
+      anchor.target = "_blank";
+      anchor.rel = "noopener";
+      slot.append(anchor);
+    });
+  });
 
   const socials = [
     { href: profile.github, label: "GitHub", icon: "github" },
@@ -152,7 +158,9 @@ export function renderProjects(list, projects) {
     );
 
     const links = el("p", "card__links");
-    links.append(link(project.code, "Code", "card__link", "github"));
+    if (project.code) {
+      links.append(link(project.code, "Code", "card__link", "github"));
+    }
     project.extra.forEach((item) => {
       links.append(link(item.href, item.label, "card__link", "arrow"));
     });
@@ -161,9 +169,11 @@ export function renderProjects(list, projects) {
       top,
       el("h3", "card__title", project.title),
       el("p", "card__summary", project.summary),
-      tagList(project.tags, "tags"),
-      links
+      tagList(project.tags, "tags")
     );
+    if (links.children.length) {
+      card.append(links);
+    }
     list.append(card);
   });
 }

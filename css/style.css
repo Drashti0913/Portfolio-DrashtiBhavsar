@@ -518,6 +518,10 @@ button {
   font-size: clamp(1.02rem, 1.6vw, 1.2rem);
 }
 
+.resume-links {
+  display: contents;
+}
+
 .hero__actions {
   display: flex;
   flex-wrap: wrap;
@@ -772,7 +776,7 @@ button {
 
 .tiles {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
   margin-top: clamp(3rem, 6vw, 5rem);
 }

@@ -31,8 +31,7 @@ import {
   renderEducation,
 } from "./render.js";
 
-const INITIAL_PROJECTS = 8;
-const listed = projects.filter((project) => project.code);
+const INITIAL_PROJECTS = 9;
 const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 function setFooterYear() {
@@ -111,7 +110,7 @@ function initProjects() {
   let expanded = false;
   let current = "all";
 
-  renderProjects(list, listed);
+  renderProjects(list, projects);
   const cards = [...list.children];
 
   function apply() {
