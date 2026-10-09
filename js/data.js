@@ -39,6 +39,7 @@ export const profile = {
     "My research has been published by Springer, Elsevier, EAI and an AAAI workshop, and one paper has been cited 111 times. I want to bring that mix of research depth and production engineering to a team that ships.",
   ],
   email: "drashtiabhavsar9@gmail.com",
+  phone: "+1 857-397-6380",
   github: GITHUB,
   linkedin: "https://www.linkedin.com/in/drashtibhavsar9/",
   scholar: SCHOLAR,
@@ -339,7 +340,7 @@ export const projects = [
       "Classifies milk quality across 1,000+ samples with SVM, decision tree and random forest models. Published by EAI and covered in the newspaper Gujarat Samachar.",
     tags: ["Scikit-learn", "SVM", "Random Forest"],
     code: `${GITHUB}/Milk-Quality-Prediction-using-SVM-Decision-Tree-and-Random-Forest`,
-    extra: [],
+    extra: [{ label: "Paper", href: "https://doi.org/10.4108/eetiot.4501" }],
   },
   {
     id: "road-safety",
@@ -509,10 +510,10 @@ export const publications = [
   {
     title:
       "Health Misinformation Detection in Hidradenitis Suppurativa Communities Using Multi-Model LLM Ensembles",
-    venue: "AAAI ICWSM Workshops",
+    venue: "ICWSM 2026 Workshops (MisD), AAAI",
     year: 2026,
     cites: 0,
-    url: SCHOLAR,
+    url: "https://workshop-proceedings.icwsm.org/abstract.php?id=2026_44",
   },
   {
     title:
@@ -520,14 +521,14 @@ export const publications = [
     venue: "Smart Agricultural Technology, Elsevier",
     year: 2023,
     cites: 111,
-    url: "https://www.sciencedirect.com/science/article/pii/S2772375523001326",
+    url: "https://doi.org/10.1016/j.atech.2023.100303",
   },
   {
     title: "Milk Quality Prediction Using Machine Learning",
     venue: "EAI Endorsed Transactions on Internet of Things",
     year: 2024,
     cites: 24,
-    url: "https://openurl.ebsco.com/EPDB%3Agcd%3A10%3A25038298/detailv2?sid=ebsco%3Aplink%3Ascholar&id=ebsco%3Agcd%3A183567171&crl=c&link_origin=scholar.google.com",
+    url: "https://doi.org/10.4108/eetiot.4501",
   },
   {
     title:
@@ -535,7 +536,7 @@ export const publications = [
     venue: "Journal of Ambient Intelligence and Humanized Computing, Springer",
     year: 2024,
     cites: 19,
-    url: "https://link.springer.com/article/10.1007/s12652-024-04795-x",
+    url: "https://doi.org/10.1007/s12652-024-04795-x",
   },
   {
     title:
@@ -543,7 +544,7 @@ export const publications = [
     venue: "Springer book chapter",
     year: 2023,
     cites: 10,
-    url: "https://link.springer.com/chapter/10.1007/978-981-97-3173-2_12",
+    url: "https://doi.org/10.1007/978-981-97-3173-2_12",
   },
 ];
 

@@ -8,6 +8,8 @@ const ICONS = {
   scholar:
     '<path d="M12 2 1 9l11 7 9-5.73V17h2V9L12 2Zm-6 10.95v4.3C6 19.3 8.7 21 12 21s6-1.7 6-3.75v-4.3l-6 3.82-6-3.82Z"/>',
   x: '<path d="M17.75 3h3.07l-6.7 7.66L22 21h-6.17l-4.83-6.32L5.47 21H2.4l7.17-8.19L2 3h6.33l4.37 5.77L17.75 3Zm-1.08 16.17h1.7L7.4 4.74H5.58l11.1 14.43Z"/>',
+  phone:
+    '<path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1L6.6 10.8Z"/>',
   mail: '<path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm9 7.2L4.6 7h14.8L12 12.2ZM4 9.1V17h16V9.1l-8 5.6-8-5.6Z"/>',
   arrow:
     '<path d="M7 17 17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>',
@@ -87,6 +89,11 @@ export function renderProfile(root, profile) {
     { href: profile.scholar, label: "Google Scholar", icon: "scholar" },
     { href: profile.twitter, label: "X", icon: "x" },
     { href: `mailto:${profile.email}`, label: "Email", icon: "mail" },
+    {
+      href: `tel:${profile.phone.replace(/[^+\d]/g, "")}`,
+      label: `Call ${profile.phone}`,
+      icon: "phone",
+    },
   ];
   root.querySelectorAll(".socials").forEach((list) => {
     socials.forEach((item) => {

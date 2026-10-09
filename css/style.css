@@ -1396,6 +1396,16 @@ a.pub__title:hover {
   margin-block: 2.5rem 2rem;
 }
 
+.contact__phone {
+  margin-top: 1.5rem;
+  color: var(--muted);
+}
+
+.contact__phone a {
+  color: var(--text);
+  font-weight: 600;
+}
+
 .noscript {
   padding-block: 2rem;
   color: var(--muted);
