@@ -25,18 +25,18 @@ export const profile = {
     "LLM ensembles",
   ],
   intro:
-    "MS Computer Science at Northeastern. I've shipped ML inference serving 10K+ requests a day at a startup, trained self-driving agents at IIT Roorkee, built models for ISRO satellites, and published research cited 164 times.",
+    "MS Computer Science at Northeastern, where I research health misinformation with LLM ensembles and lead events for ACM. Before that I shipped ML serving 10K+ requests a day at LOTI AI, trained self-driving agents at IIT Roorkee and built models for ISRO. My research has been cited 164 times.",
   highlights: [
     { value: 10, suffix: "K+", label: "daily requests on ML systems I built" },
     { value: 164, suffix: "", label: "citations on Google Scholar" },
-    { value: 4, suffix: "", label: "internships: LOTI AI, ISB, IITR, ISRO" },
+    { value: 9, suffix: "", label: "research and industry roles" },
     { value: 5, suffix: "", label: "papers: Springer, Elsevier, EAI, AAAI" },
     { value: 25, suffix: "+", label: "projects shipped on GitHub" },
   ],
   bio: [
     "I'm a Computer Science grad student at Northeastern University in Boston, and I like problems that are a little bit crazy: teaching a car to overtake on its own, keeping 50 people in sync in one code editor, predicting the 2026 World Cup with 10,000 simulations.",
     "As an ML Engineer Intern at LOTI AI, I built a production inference platform that handled 10K+ requests a day at 99% uptime, and cut deployments from 2 hours to 15 minutes with Docker, Kubernetes and CI/CD. Before that, I trained deep RL agents for autonomous driving as a Google ExploreCSR fellow at IIT Roorkee, mapped Indian AI innovation from 10,000+ patents at ISB, and shipped a real-time satellite-signal classifier at ISRO.",
-    "My research has been published by Springer, Elsevier, EAI and an AAAI workshop, and one paper has been cited 111 times. I want to bring that mix of research depth and production engineering to a team that ships.",
+    "At Northeastern I'm a research assistant building a 28-model LLM framework to catch health misinformation (now an ICWSM 2026 paper) and Head of Events for ACM. My research has been published by Springer, Elsevier, EAI and AAAI, and one paper has been cited 111 times. I want to bring that mix of research depth and production engineering to a team that ships.",
   ],
   email: "drashtiabhavsar9@gmail.com",
   phone: "+1 857-397-6380",
@@ -125,6 +125,8 @@ export const skillGroups = [
       "Prompt engineering",
       "Qdrant",
       "pgvector",
+      "Milvus",
+      "ColBERT",
     ],
   },
   {
@@ -139,6 +141,8 @@ export const skillGroups = [
       "OpenCV",
       "CARLA",
       "Deep RL",
+      "EfficientNet",
+      "Vision Transformers",
     ],
   },
   {
@@ -399,18 +403,34 @@ export const projects = [
   },
 ];
 
+// Roles with points get a full card. Roles with only a summary get a short one.
 export const experience = [
+  {
+    title: "Research Assistant, AI/ML and Health Misinformation",
+    where: "Northeastern University",
+    place: "Boston, MA",
+    when: "Jan 2026 – May 2026",
+    win: "ICWSM 2026 paper",
+    tags: ["RoBERTa", "Llama 3", "Mistral", "BioMistral", "UMAP", "HDBSCAN"],
+    points: [
+      "Researched health misinformation in online Hidradenitis Suppurativa patient communities with NLP, transformer models and multi-model LLM ensembles.",
+      "Helped build and evaluate a 28-model framework: RoBERTa sentiment and emotion analysis, UMAP/HDBSCAN clustering, NLI zero-shot classification, and open-source LLMs including Llama 3, Mistral, Flan-T5, BioMistral and GatorTron.",
+      "Analyzed 9,838 Reddit posts and comments for cure claims, pseudoscience and commercial promotion, and contributed to the HS Misinformation Index (HSMI) that scores misinformation risk.",
+    ],
+  },
   {
     title: "Machine Learning Engineer Intern",
     where: "LOTI AI Inc.",
     place: "Seattle, WA",
     when: "Aug 2024 – Jul 2025",
     win: "10K+ requests/day",
-    tags: ["PyTorch", "OpenCV", "BGE", "Qwen", "Docker", "Kubernetes"],
+    tags: ["PyTorch", "BGE", "Qwen", "EfficientNet", "Milvus", "Kubernetes"],
     points: [
-      "Engineered a production Python inference platform that integrates multiple APIs with error handling, rate limiting and monitoring, sustaining 99% uptime across 10K+ daily requests.",
-      "Built a multi-scale PyTorch system for real-time content classification that reached 87.3% decision accuracy, 12% above the production baseline, and lifted an AI prompt-routing pipeline to 97% recall.",
-      "Architected Docker and Kubernetes microservices for real-time inference and cut deployment time from 2 hours to 15 minutes with automated CI/CD, keeping 95%+ test coverage on a 5-person Agile team.",
+      "Engineered a production Python inference platform with error handling, rate limiting and monitoring, sustaining 99% uptime across 10K+ daily requests.",
+      "Built a Multi-Scale Unified Network (MSUN) in PyTorch that keeps image classification accurate across input sizes, reaching 85–90% on COCO-2017 and beating MS-CNN and SNIPER.",
+      "Engineered a semantic search and ranking system that filters rules for AI prompts, benchmarking BGE, Qwen and MPNet embeddings to reach a 75% F1 score and 97% recall.",
+      "Developed a hybrid deepfake detector that ensembles EfficientNet and Molmo over full frames and face crops, with a multiprocessing pipeline for real-time video.",
+      "Benchmarked TF-IDF and BM25 against SPLADE, ColBERT and SBERT on Milvus, and cut deployments from 2 hours to 15 minutes with Docker, Kubernetes and CI/CD.",
     ],
   },
   {
@@ -421,8 +441,8 @@ export const experience = [
     win: "92% accuracy",
     tags: ["BERT", "spaCy", "SQL", "R", "Pandas"],
     points: [
-      "Built and analyzed a 10,000+ record Indian patent dataset to classify AI vs. non-AI innovations by gender, industry and timeline, with a 92% accurate classifier.",
-      "Automated data collection and transformation, cutting manual ETL effort by 50%, and built dashboards that communicate technology trends across sectors such as healthcare and real estate.",
+      "Cleaned and structured 10,000+ Indian government patent records from scratch and classified filings by AI relevance and gender representation with BERT and spaCy, at 92% accuracy.",
+      "Automated data collection and transformation, cutting manual ETL effort by 50%, and built dashboards that show technology trends across sectors such as healthcare and real estate.",
     ],
   },
   {
@@ -433,23 +453,74 @@ export const experience = [
     win: "94% success · <50 ms",
     tags: ["PyTorch", "OpenCV", "Deep RL", "DDPG", "TD3", "CARLA"],
     points: [
-      "Developed hierarchical deep reinforcement learning models in CARLA for autonomous-vehicle navigation using depth-camera inputs and obstacle-detection modules.",
-      "Engineered state features and reward functions for overtaking, lane changing and collision avoidance, improving navigation decision accuracy by 25% in dynamic traffic.",
-      "Reached a 94% task-success rate across simulated urban scenarios with real-time inference under 50 ms.",
+      "Selected as one of the top 50 students for Google's exploreCSR research mentorship program.",
+      "Developed hierarchical deep reinforcement learning models in CARLA for lane changing and overtaking, using depth-camera inputs and obstacle-detection modules.",
+      "Engineered state features and reward functions that improved navigation decision accuracy by 25%, reaching a 94% task-success rate with inference under 50 ms.",
+    ],
+  },
+  {
+    title: "Data Analyst",
+    where: "Virtual Reality Systems",
+    place: "Gandhinagar, India",
+    when: "Feb 2024 – Apr 2024",
+    win: "800 → 200 ms",
+    tags: [
+      "React",
+      "FastAPI",
+      "Django",
+      "Docker",
+      "GitHub Actions",
+      "Power BI",
+    ],
+    points: [
+      "Built a full-stack web app with a React frontend and FastAPI/Django backend, cutting API latency from 800 ms to 200 ms and serving 500+ daily active users.",
+      "Set up CI/CD with GitHub Actions and Docker, and shipped features in two-week Agile sprints on a microservices architecture.",
+      "Built a Power BI dashboard and a rule-based chatbot that converses in three regional languages.",
     ],
   },
   {
     title: "Data Science Research Intern",
-    where: "Indian Space Research Organisation (ISRO)",
+    where: "Space Applications Centre, ISRO",
     place: "Ahmedabad, India",
     when: "Jun 2023 – Aug 2023",
     win: "98% accuracy",
-    tags: ["Random Forest", "LSTM", "FastAPI", "Time series", "Plotly"],
+    tags: ["Random Forest", "LSTM", "FastAPI", "NavIC", "Time series"],
     points: [
-      "Contributed to Navigation Signal Anomaly Detection research with statistical analysis and time-series forecasting on satellite navigation data.",
-      "Trained and tuned Random Forest and LSTM models to 98% and 97% accuracy through hyperparameter optimization and preprocessing.",
-      "Deployed a real-time L5-signal classification model with FastAPI that improved positioning accuracy by 23%.",
+      "Predicted thunderstorms and signal anomalies from NavIC S-band and L-band (L1, L5) satellite data, showing that S-band is more sensitive to atmospheric conditions.",
+      "Trained and tuned Random Forest and LSTM models to 98% and 97% accuracy, and deployed a real-time L5-signal classifier with FastAPI that improved positioning accuracy by 23%.",
     ],
+  },
+  {
+    title: "Research Intern",
+    where: "India Meteorological Department (IMD)",
+    place: "Bhopal, India",
+    when: "Jun 2023 – Aug 2023",
+    win: "2,000+ radar images",
+    tags: ["ConvLSTM", "Vision Transformers", "Autoencoders", "Wradlib"],
+    points: [
+      "Built a weather-radar dataset from raw IMD files, extracting reflectivity (dBZ) with Wradlib and generating 2,000+ PPI and RHI images.",
+      "Explored ConvLSTM, autoencoders and Vision Transformers for spatio-temporal forecasting of radar sequences.",
+    ],
+  },
+  {
+    title: "Frontend Developer",
+    where: "Nextun Technology",
+    place: "Ahmedabad, India",
+    when: "May 2023 – Jul 2023",
+    win: "~50% more engagement",
+    tags: ["JavaScript", "UI/UX"],
+    summary:
+      "Improved an interactive web app's UI and UX, lifting user engagement by about 50%, working remotely with a cross-functional team.",
+  },
+  {
+    title: "Web Development and Design Intern",
+    where: "The Sparks Foundation",
+    place: "Remote",
+    when: "Mar 2023 – May 2023",
+    win: "",
+    tags: ["PHP", "HTML", "CSS"],
+    summary:
+      "Built and designed web projects, including a basic banking system website.",
   },
 ];
 
@@ -468,13 +539,6 @@ export const education = [
     when: "Graduated May 2024",
     note: "GPA 3.77 / 4.0",
   },
-  {
-    degree: "Nanodegree, AI Programming with Python",
-    where: "Udacity",
-    place: "Online",
-    when: "Completed",
-    note: "",
-  },
 ];
 
 export const achievements = [
@@ -489,9 +553,14 @@ export const achievements = [
     text: "My systematic study of smart drip and sprinkler irrigation became a go-to reference in the field.",
   },
   {
-    title: "Google ExploreCSR fellow",
-    org: "IIT Roorkee",
-    text: "Selected as a Junior Research Fellow to work on autonomous driving with deep RL.",
+    title: "Top 50, Google ExploreCSR",
+    org: "IIT Roorkee · Google",
+    text: "Selected from a competitive pool for Google's research mentorship, and featured in my university newsletter for it.",
+  },
+  {
+    title: "Merit and research scholarship",
+    org: "Academic award",
+    text: "Awarded for academic merit and research.",
   },
   {
     title: "In the newspaper",
@@ -503,6 +572,42 @@ export const achievements = [
     org: "EasyA Hackathon",
     text: "Shipped a working multi-asset DeFi trading platform in 24 hours.",
   },
+];
+
+export const leadership = [
+  {
+    title: "Head of Events",
+    where: "ACM at Northeastern University",
+    when: "Jan 2026 – present",
+    text: "Lead events for Northeastern's ACM student chapter.",
+  },
+  {
+    title: "Mentee, ACM India Summer School",
+    where: "IIT Gandhinagar",
+    when: "Jun 2025",
+    text: "Summer school on AI for Social Good.",
+  },
+  {
+    title: "Mentee, ACM India Winter School",
+    where: "IIT Patna",
+    when: "Dec 2023",
+    text: "Winter school on recent trends in AI and ML for Industry 4.0.",
+  },
+];
+
+export const certifications = [
+  "IBM Data Science (Coursera)",
+  "Introduction to Generative AI",
+  "ChatGPT Prompt Engineering",
+  "Foundations of Responsible AI",
+  "AI Programming with Python (Udacity)",
+  "English Proficiency Certificate",
+];
+
+export const languages = [
+  "English (professional)",
+  "Hindi (professional)",
+  "Gujarati (native)",
 ];
 
 // cites is the Google Scholar count. Leave it at 0 to hide it.

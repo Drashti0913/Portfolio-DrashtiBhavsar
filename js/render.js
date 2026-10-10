@@ -188,6 +188,9 @@ export function renderProjects(list, projects) {
 export function renderExperience(list, items) {
   items.forEach((job) => {
     const li = el("li", "job reveal");
+    if (!job.points) {
+      li.classList.add("job--short");
+    }
     const head = el("div", "job__head");
     const titles = el("div");
     titles.append(
@@ -195,14 +198,40 @@ export function renderExperience(list, items) {
       el("p", "job__where", `${job.where} · ${job.place}`)
     );
     const meta = el("div", "job__meta");
-    meta.append(el("p", "job__when", job.when), el("p", "job__win", job.win));
+    meta.append(el("p", "job__when", job.when));
+    if (job.win) {
+      meta.append(el("p", "job__win", job.win));
+    }
     head.append(titles, meta);
+    li.append(head);
 
-    const points = el("ul", "job__points");
-    job.points.forEach((point) => points.append(el("li", "", point)));
-    li.append(head, points, tagList(job.tags, "tags"));
+    if (job.points) {
+      const points = el("ul", "job__points");
+      job.points.forEach((point) => points.append(el("li", "", point)));
+      li.append(points);
+    } else {
+      li.append(el("p", "job__summary", job.summary));
+    }
+    li.append(tagList(job.tags, "tags"));
     list.append(li);
   });
+}
+
+export function renderLeadership(list, items) {
+  items.forEach((item) => {
+    const li = el("li", "lead reveal");
+    li.append(
+      el("p", "lead__when", item.when),
+      el("h3", "lead__title", item.title),
+      el("p", "lead__where", item.where),
+      el("p", "lead__text", item.text)
+    );
+    list.append(li);
+  });
+}
+
+export function renderChips(list, items) {
+  items.forEach((item) => list.append(el("li", "tags-item", item)));
 }
 
 export function renderScholar(list, stats) {

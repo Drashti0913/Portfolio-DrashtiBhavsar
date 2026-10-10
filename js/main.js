@@ -11,6 +11,9 @@ import {
   experience,
   education,
   achievements,
+  leadership,
+  certifications,
+  languages,
   publications,
   scholarStats,
   photos,
@@ -27,6 +30,8 @@ import {
   renderScholar,
   renderPublications,
   renderAchievements,
+  renderLeadership,
+  renderChips,
   renderPhotos,
   renderEducation,
 } from "./render.js";
@@ -267,8 +272,11 @@ function init() {
   renderScholar(document.querySelector(".scholar"), scholarStats);
   renderPublications(document.querySelector(".pubs"), publications);
   renderAchievements(document.querySelector(".achievements"), achievements);
+  renderLeadership(document.querySelector(".leads"), leadership);
   renderPhotos(document.querySelector(".photo-strip__track"), photos);
   renderEducation(document.querySelector(".edus"), education);
+  renderChips(document.querySelector(".certs"), certifications);
+  renderChips(document.querySelector(".langs"), languages);
   initRotator();
   initHeroPhotos();
   initMenu();
