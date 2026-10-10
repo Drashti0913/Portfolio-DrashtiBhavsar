@@ -659,7 +659,7 @@ export const scholarStats = [
   { value: 4, label: "i10-index" },
 ];
 
-// Photos for the "life outside the terminal" strip.
+// Photos that crossfade in the hero. The first one is set in index.html.
 export const photos = [
   {
     src: "./images/life/husky-welcome.jpg",

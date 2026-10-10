@@ -23,10 +23,10 @@ Build a static homepage that helps recruiters, faculty and classmates understand
 
 ## Features
 
-- Bold, dark single-page design: hero with a typed rotating headline and crossfading photos, a tech ticker, count-up stats, and sections for about, skills, projects, experience, research, achievements, life, education and contact.
+- Bold, dark single-page design: hero with a typed rotating headline and crossfading photos, a tech ticker, count-up stats, and sections for about, skills, projects, experience, research, achievements, leadership, education and contact.
 - 17 project cards, each linked to its GitHub repo, with a headline metric, a category filter and a pointer-following glow. Featured projects get a wide card.
 - Research section with live Google Scholar numbers (citations, h-index, i10-index) and a citation bar for each paper.
-- An auto-scrolling photo strip, a scroll progress bar and a copy-email button.
+- A scroll progress bar and a copy-email button.
 - Respects `prefers-reduced-motion`: animations, typing and count-ups turn off.
 - Content lives in [`js/data.js`](./js/data.js). A project appears on the site once it has a `code` link. The `profile.resumes` list adds the SDE and ML resume download buttons (PDFs in the repo root).
 - SEO: page metadata, Open Graph card, JSON-LD, sitemap and robots.txt.
@@ -42,7 +42,7 @@ Build a static homepage that helps recruiters, faculty and classmates understand
 │   ├── data.js           All site content (edit this to update the site)
 │   └── render.js         DOM helpers and renderers
 ├── images/               Favicon, headshot, screenshot
-│   └── life/             Web-sized photos for the hero and photo strip
+│   └── life/             Web-sized photos for the hero
 ├── docs/                 Design document and wireframe mockups
 ├── eslint.config.js      ESLint config
 ├── .prettierrc           Prettier config
@@ -96,7 +96,7 @@ The site is deployed with GitHub Pages from the `main` branch (Settings, then Pa
   - "Here are my old Next.js component files. Move my real content from them into data.js."
   - "Show one large photo beside my bio in the About section, and make the Get in touch button scroll to the contact section."
   - "Rewrite any lines Prettier would change so the code passes a Prettier check."
-  - (October 2026, Claude Code) "Redesign my portfolio to be eye-catching and enthusiastic, inspired by jaygohil.com, using my GitHub, LinkedIn and Google Scholar." This produced the current visual design, the new sections (research stats, achievements, life photo strip) and six more project cards.
+  - (October 2026, Claude Code) "Redesign my portfolio to be eye-catching and enthusiastic, inspired by jaygohil.com, using my GitHub, LinkedIn and Google Scholar." This produced the current visual design, the new sections (research stats, achievements, leadership) and six more project cards.
 - **What I reviewed and changed by hand:** I checked every section against my old portfolio and chose which content and photo to use. I changed the About section to a single large photo and adjusted its size, replaced the "Email me" button with "Get in touch" so it works without an email app, and ran all three pages through the W3C validator. I reviewed the generated code before publishing it.
 
 ## License

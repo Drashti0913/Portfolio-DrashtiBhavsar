@@ -282,24 +282,6 @@ export function renderAchievements(list, items) {
   });
 }
 
-export function renderPhotos(track, photos) {
-  // Doubled for a seamless loop. The copy is hidden from assistive tech.
-  [...photos, ...photos].forEach((photo, index) => {
-    const li = el("li", "photo");
-    if (index >= photos.length) {
-      li.setAttribute("aria-hidden", "true");
-    }
-    const img = el("img");
-    img.src = photo.src;
-    img.alt = index >= photos.length ? "" : photo.alt;
-    img.loading = "lazy";
-    img.width = 618;
-    img.height = 1100;
-    li.append(img, el("p", "photo__caption", photo.caption));
-    track.append(li);
-  });
-}
-
 export function renderEducation(list, items) {
   items.forEach((item) => {
     const li = el("li", "edu reveal");

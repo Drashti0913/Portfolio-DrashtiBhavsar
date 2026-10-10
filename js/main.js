@@ -32,7 +32,6 @@ import {
   renderAchievements,
   renderLeadership,
   renderChips,
-  renderPhotos,
   renderEducation,
 } from "./render.js";
 
@@ -273,7 +272,6 @@ function init() {
   renderPublications(document.querySelector(".pubs"), publications);
   renderAchievements(document.querySelector(".achievements"), achievements);
   renderLeadership(document.querySelector(".leads"), leadership);
-  renderPhotos(document.querySelector(".photo-strip__track"), photos);
   renderEducation(document.querySelector(".edus"), education);
   renderChips(document.querySelector(".certs"), certifications);
   renderChips(document.querySelector(".langs"), languages);
