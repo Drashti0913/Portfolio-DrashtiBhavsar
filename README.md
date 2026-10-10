@@ -28,7 +28,7 @@ Build a static homepage that helps recruiters, faculty and classmates understand
 - Research section with live Google Scholar numbers (citations, h-index, i10-index) and a citation bar for each paper.
 - A scroll progress bar and a copy-email button.
 - Respects `prefers-reduced-motion`: animations, typing and count-ups turn off.
-- Content lives in [`js/data.js`](./js/data.js). A project appears on the site once it has a `code` link. The `profile.resumes` list adds the SDE and ML resume download buttons (PDFs in the repo root).
+- Content lives in [`js/data.js`](./js/data.js). A project appears on the site once it has a `code` link. The `profile.resumes` list adds the resume download button (PDF in the repo root).
 - SEO: page metadata, Open Graph card, JSON-LD, sitemap and robots.txt.
 
 ## Project structure

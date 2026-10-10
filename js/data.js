@@ -11,10 +11,7 @@ export const profile = {
   status: "Available Jan–Aug 2027 for internships and co-ops",
   location: "Boston, MA",
   // PDFs in the repo root. Remove an entry to hide its button.
-  resumes: [
-    { label: "SDE resume", file: "Drashti-Bhavsar-SDE-Resume.pdf" },
-    { label: "ML resume", file: "Drashti-Bhavsar-ML-Resume.pdf" },
-  ],
+  resumes: [{ label: "Resume", file: "Drashti-Bhavsar-Resume.pdf" }],
   // The hero headline cycles through these words.
   rotating: [
     "RAG pipelines",
@@ -434,7 +431,7 @@ export const experience = [
     ],
   },
   {
-    title: "AI/ML Research Intern",
+    title: "Data Analyst",
     where: "Indian School of Business (ISB)",
     place: "Hyderabad, India",
     when: "Feb 2025 – Jul 2025",
@@ -459,7 +456,7 @@ export const experience = [
     ],
   },
   {
-    title: "Data Analyst",
+    title: "Software Engineer Intern",
     where: "Virtual Reality Systems",
     place: "Gandhinagar, India",
     when: "Feb 2024 – Apr 2024",
@@ -530,14 +527,14 @@ export const education = [
     where: "Northeastern University",
     place: "Boston, USA",
     when: "Aug 2025 – Dec 2027 (expected)",
-    note: "GPA 3.9 / 4.0",
+    note: "",
   },
   {
     degree: "Bachelor of Technology, Computer Engineering",
     where: "Pandit Deendayal Energy University",
     place: "Gandhinagar, India",
     when: "Graduated May 2024",
-    note: "GPA 3.77 / 4.0",
+    note: "",
   },
 ];
 
