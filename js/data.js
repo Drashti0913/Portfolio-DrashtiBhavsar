@@ -32,7 +32,7 @@ export const profile = {
   ],
   bio: [
     "I'm a Computer Science grad student at Northeastern University in Boston, and I like problems that are a little bit crazy: teaching a car to overtake on its own, keeping 50 people in sync in one code editor, predicting the 2026 World Cup with 10,000 simulations.",
-    "As an ML Engineer Intern at LOTI AI, I built a production inference platform that handled 10K+ requests a day at 99% uptime, and cut deployments from 2 hours to 15 minutes with Docker, Kubernetes and CI/CD. Before that, I trained deep RL agents for autonomous driving as a Google ExploreCSR fellow at IIT Roorkee, mapped Indian AI innovation from 10,000+ patents at ISB, and shipped a real-time satellite-signal classifier at ISRO.",
+    "As an ML Engineer at LOTI AI, I built a production inference platform that handled 10K+ requests a day at 99% uptime, and cut deployments from 2 hours to 15 minutes with Docker, Kubernetes and CI/CD. Before that, I trained deep RL agents for autonomous driving as a Google ExploreCSR fellow at IIT Roorkee, mapped Indian AI innovation from 10,000+ patents at ISB, and shipped a real-time satellite-signal classifier at ISRO.",
     "At Northeastern I'm a research assistant building a 28-model LLM framework to catch health misinformation (now an ICWSM 2026 paper) and Head of Events for ACM. My research has been published by Springer, Elsevier, EAI and AAAI, and one paper has been cited 111 times. I want to bring that mix of research depth and production engineering to a team that ships.",
   ],
   email: "drashtiabhavsar9@gmail.com",
@@ -416,7 +416,7 @@ export const experience = [
     ],
   },
   {
-    title: "Machine Learning Engineer Intern",
+    title: "Machine Learning Engineer",
     where: "LOTI AI Inc.",
     place: "Seattle, WA",
     when: "Aug 2024 – Jul 2025",
