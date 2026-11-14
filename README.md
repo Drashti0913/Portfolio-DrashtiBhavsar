@@ -4,7 +4,7 @@ My personal homepage, built with vanilla HTML5, CSS3 and ES6 modules. It has no 
 
 - **Author:** Drashti Bhavsar ([GitHub](https://github.com/Drashti0913))
 - **Class:** [Web Development](https://northeastern.instructure.com/courses/261032)
-- **Live site:** [drashtibhavsar.com](https://drashtibhavsar.com)
+- **Live site:** [drashtibhavsar.com](drashtibhavsar.com)
 - **Demo video:** : [public video link](https://youtu.be/GAaeQRXNaDw)
 - **Design document:** [docs/design-document.md](./docs/design-document.md)
 - ** Slides:** https://docs.google.com/presentation/d/19sa73-uGT1jtSlqy1ftlFkmx0rzad3mqYDV96R4nFz0/edit?usp=sharing
