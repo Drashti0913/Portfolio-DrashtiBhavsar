@@ -183,6 +183,29 @@ export const projects = [
     extra: [],
   },
   {
+    id: "haunted-listing",
+    title: "Haunted Listing: an AI-directed ghost hunt",
+    category: "llm",
+    featured: true,
+    metric: "HackPrinceton Fall 2026",
+    summary:
+      "A real-time 3D ghost hunt inside 20 real Houston and LA buildings, built with a team of four. A LangChain deepagents AI Director plans each level and acts through custom tools about every 20 seconds, with a rule-based fallback when the model is rate-limited. Captures pay real sandbox bank transfers through Capital One Nessie, and CoStar, Matterport and Vexcel data shape every level.",
+    tags: ["LangChain", "AI Agents", "FastAPI", "Three.js", "AWS EC2"],
+    code: `${GITHUB}/Haunted-Listing`,
+    extra: [],
+  },
+  {
+    id: "sentimind",
+    title: "Sentimind: an emotional radar for chats",
+    category: "llm",
+    metric: "HackPrinceton Fall 2025",
+    summary:
+      "A browser extension, built with a team of four, that reads a conversation and gives a real-time Emotional Safety Score. A Flask backend on Dedalus MCP infrastructure runs a Gemini pipeline with Reddit context, flagging toxicity and manipulation while also recognizing supportive tone, without storing personal data.",
+    tags: ["MCP", "Gemini", "Flask", "JavaScript"],
+    code: "https://github.com/devpatel122003/SentiMind",
+    extra: [{ label: "Devpost", href: "https://devpost.com/software/sentimind" }],
+  },
+  {
     id: "email-rag",
     title: "Personal Email RAG",
     category: "llm",
@@ -566,8 +589,8 @@ export const achievements = [
   },
   {
     title: "Hackathon builder",
-    org: "EasyA Hackathon",
-    text: "Shipped a working multi-asset DeFi trading platform in 24 hours.",
+    org: "HackPrinceton and EasyA",
+    text: "Built Sentimind (HackPrinceton Fall 2025), Haunted Listing (HackPrinceton Fall 2026) and a 24-hour multi-asset DeFi trading platform (EasyA).",
   },
 ];
 
