@@ -189,10 +189,10 @@ export const projects = [
     featured: true,
     metric: "HackPrinceton Fall 2026",
     summary:
-      "A real-time 3D ghost hunt inside 20 real Houston and LA buildings, built with a team of four. A LangChain deepagents AI Director plans each level and acts through custom tools about every 20 seconds, with a rule-based fallback when the model is rate-limited. Captures pay real sandbox bank transfers through Capital One Nessie, and CoStar, Matterport and Vexcel data shape every level.",
+      "A real-time 3D ghost hunt inside 20 real Houston and LA buildings, built with a team of four. A LangChain deepagents AI Director writes each haunting from the building's real CoStar record and acts through custom tools about every 20 seconds, running in the background so the 60 fps game never waits, with a rule-based fallback. Captures pay real sandbox bank transfers through Capital One Nessie, and Matterport scans and Vexcel aerial photos shape every level. Deployed on AWS EC2 at $0 cost.",
     tags: ["LangChain", "AI Agents", "FastAPI", "Three.js", "AWS EC2"],
     code: `${GITHUB}/Haunted-Listing`,
-    extra: [],
+    extra: [{ label: "Devpost", href: "https://devpost.com/software/haunted-listing" }],
   },
   {
     id: "sentimind",
